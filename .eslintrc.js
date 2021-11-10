@@ -1,7 +1,6 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
     node: true,
   },
   extends: ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
@@ -9,7 +8,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 13,
+    ecmaVersion: 2020,
     sourceType: "module",
   },
   plugins: ["react"],
