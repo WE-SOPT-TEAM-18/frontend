@@ -1,4 +1,5 @@
 # Netflix
+29기 WE SOPT 합동 세미나 18조
 
 ## 📌 Commit Message Convention
 ```
@@ -29,3 +30,8 @@
 "styled-components": "^5.3.3",
 "web-vitals": "^1.0.1"
 ```
+
+## 🙋🏻‍♀️ 개발자 소개
+|김효인|백지연|안채량|
+|-|-|-|
+|[@Hyoin-Kim](https://github.com/Hyoin-Kim)|[@100Gyeon](https://github.com/100Gyeon)|[@Ryammie](https://github.com/Ryammie)|
