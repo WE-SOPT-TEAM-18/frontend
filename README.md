@@ -18,7 +18,7 @@
   ```
 
 ## 🌳 브랜치 전략
-- **main - develop - feature**
+- **master - develop - feature**
 - master : 배포
 - develop : 개발된 기능(feature)을 통합하는 브랜치
 - feat/[name] (`feat/hyoin`, `feat/jiyeon`, `feat/chaeryang`) : 멤버별 기능 개발을 진행하는 브랜치
