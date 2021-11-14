@@ -30,7 +30,7 @@
 "react-dom": "^17.0.2",
 "react-router-dom": "^6.0.2",
 "react-scripts": "^4.0.3",
-"reset-css": "^5.0.1",
+"styled-reset": "^4.3.4",
 "styled-components": "^5.3.3",
 "web-vitals": "^1.0.1"
 ```
