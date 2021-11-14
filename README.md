@@ -1,18 +1,21 @@
 # Netflix
 29기 WE SOPT 합동 세미나 18조
 
-## 📌 Commit Message Convention
-```
-#   init     : 초기화
-#   feat     : 기능 추가
-#   update   : 기능 보완 (업그레이드)
-#   fix      : 버그 수정
-#   refactor : 리팩토링
-#   style    : 스타일 (코드 형식, 세미콜론 추가: 비즈니스 로직에 변경 없음, 스타일)
-#   docs     : 문서 (문서 추가(Readme), 수정, 삭제)
-#   test     : 테스트 (테스트 코드 추가, 수정, 삭제: 비즈니스 로직에 변경 없음)
-#   chore    : 기타 변경사항 (빌드 스크립트 수정, 에셋 추가 등)
-```
+## 📌 Convention
+- Prettier + ESLint로 Code Convention 설정
+- Commit Message Convention
+
+  ```
+  #   init     : 초기화
+  #   feat     : 기능 추가
+  #   update   : 기능 보완 (업그레이드)
+  #   fix      : 버그 수정
+  #   refactor : 리팩토링
+  #   style    : 스타일 (코드 형식, 세미콜론 추가: 비즈니스 로직에 변경 없음, 스타일)
+  #   docs     : 문서 (Readme 추가, 수정, 삭제)
+  #   test     : 테스트 (테스트 코드 추가, 수정, 삭제: 비즈니스 로직에 변경 없음)
+  #   chore    : 기타 변경사항 (빌드 스크립트 수정, 에셋 추가 등)
+  ```
 
 ## 🌳 브랜치 전략
 - **main - develop - feature**
@@ -27,6 +30,7 @@
 "react-dom": "^17.0.2",
 "react-router-dom": "^6.0.2",
 "react-scripts": "^4.0.3",
+"reset-css": "^5.0.1",
 "styled-components": "^5.3.3",
 "web-vitals": "^1.0.1"
 ```
