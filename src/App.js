@@ -1,13 +1,11 @@
 import GlobalStyle from './components/Common/GlobalStyles';
-import Header from './components/Common/Header';
-import Footer from './components/Common/Footer';
+import Router from './components/Common/Router';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Footer />
       <GlobalStyle></GlobalStyle>
+      <Router />
     </div>
   );
 }
