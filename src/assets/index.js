@@ -20,6 +20,8 @@ export { default as img_5 } from './images/img_5.png';
 export { default as img_6 } from './images/img_6.png';
 export { default as img_7 } from './images/img_7.png';
 export { default as img_8 } from './images/img_8.png';
+export { default as img_header_main } from './images/img_header_main.png';
+export { default as img_header_title } from './images/img_header_title.png';
 export { default as img_profile } from './images/img_profile.png';
 export { default as Netflix_logo } from './images/Netflix_logo.png';
 export { default as NewEpisode_height } from './images/NewEpisode_height.png';
