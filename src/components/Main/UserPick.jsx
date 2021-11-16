@@ -56,6 +56,7 @@ const UserPick = () => {
 export default UserPick;
 
 const StyledUserPick = styled.div`
+  padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
   & > div {

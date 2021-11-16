@@ -26,10 +26,15 @@ const Billboard = () => {
 
 export default Billboard;
 
-const StyledBillboard = styled.div``;
+const StyledBillboard = styled.div`
+  box-shadow: inset 0 -33rem 8rem #141414;
+  margin-bottom: -27.7rem;
+`;
 
 const StyledMainImg = styled.img`
   width: 100%;
+  z-index: -1;
+  position: relative;
 `;
 
 const StyledTitleImg = styled.img`
