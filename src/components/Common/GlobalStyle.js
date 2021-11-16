@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
   body, button {
     font-family: 'Noto Sans KR', sans-serif;
   }
