@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     min-height: 100vh;
     margin: 0 36rem;
+
+    @media ${({ theme }) => theme.device.tablet} {
+      margin: 0;
+    }
   }
 
   html {
