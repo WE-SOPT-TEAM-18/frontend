@@ -61,6 +61,18 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0));
 
+  @media ${({ theme }) => theme.device.tablet} {
+    width: 100%;
+    padding-left: 3.6rem;
+    padding-right: 2.9rem;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 100%;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+  }
+
   &.scrolled {
     background: rgba(20, 20, 20, 1);
   }
