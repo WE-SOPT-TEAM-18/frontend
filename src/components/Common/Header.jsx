@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { btn_bell, btn_more, btn_search, img_profile, Netflix_logo } from 'assets';
+import { btn_bell, btn_more, btn_search, ic_dropdown, img_profile, Netflix_logo } from 'assets';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +32,10 @@ const Header = () => {
             <li>내가 찜한 콘텐츠</li>
           </Link>
         </ul>
+        <StyledMenu>
+          <div>메뉴</div>
+          <img src={ic_dropdown} />
+        </StyledMenu>
       </StyledLeft>
       <StyledRight>
         <img src={btn_search} />
@@ -47,6 +51,7 @@ export default Header;
 
 const StyledHeader = styled.div`
   position: fixed;
+  z-index: 999;
   width: calc(100% - 72rem);
   height: 5.2rem;
   padding-left: 4.7rem;
@@ -66,19 +71,43 @@ const StyledLeft = styled.div`
   align-items: center;
 
   & > ul {
-    margin-left: 3.4rem;
     display: flex;
+    margin-left: 3.4rem;
+
+    @media ${({ theme }) => theme.device.tablet} {
+      margin-left: 0;
+    }
 
     & > li,
     & > a {
       font-size: 1.2rem;
       margin-right: 1.5rem;
       cursor: pointer;
+
+      @media ${({ theme }) => theme.device.tablet} {
+        display: none;
+      }
     }
 
     & > a {
       text-decoration: none;
       color: #ffffff;
+    }
+  }
+`;
+
+const StyledMenu = styled.div`
+  display: none;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    display: flex;
+    align-items: center;
+    margin-left: 2.7rem;
+
+    & > div {
+      margin-right: 0.3rem;
+      font-weight: 700;
+      font-size: 1.2rem;
     }
   }
 `;
@@ -93,5 +122,11 @@ const StyledRight = styled.div`
 
   & > img:nth-child(2) {
     margin-right: 1.1rem;
+  }
+
+  & > img:last-child {
+    @media ${({ theme }) => theme.device.tablet} {
+      display: none;
+    }
   }
 `;
