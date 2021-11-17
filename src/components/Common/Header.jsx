@@ -1,18 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { btn_bell, btn_more, btn_search, img_profile, Netflix_logo } from 'assets';
 
 const Header = () => {
   return (
     <StyledHeader>
       <StyledLeft>
-        <img src={Netflix_logo} />
+        <Link to="/">
+          <img src={Netflix_logo} />
+        </Link>
         <ul>
-          <li>홈</li>
+          <Link to="/">
+            <li>홈</li>
+          </Link>
           <li>TV 프로그램</li>
           <li>영화</li>
           <li>NEW! 요즘 대세 콘텐츠</li>
-          <li>내가 찜한 콘텐츠</li>
+          <Link to="/sub">
+            <li>내가 찜한 콘텐츠</li>
+          </Link>
         </ul>
       </StyledLeft>
       <StyledRight>
@@ -47,9 +54,16 @@ const StyledLeft = styled.div`
     margin-left: 3.4rem;
     display: flex;
 
-    & > li {
+    & > li,
+    & > a {
       font-size: 1.2rem;
       margin-right: 1.5rem;
+      cursor: pointer;
+    }
+
+    & > a {
+      text-decoration: none;
+      color: #ffffff;
     }
   }
 `;

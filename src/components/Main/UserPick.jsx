@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const UserPick = () => {
@@ -27,7 +28,7 @@ const UserPick = () => {
         <h2>박수아님이 시청중인 콘텐츠</h2>
       </div>
       <div>
-        <h2>내가 찜한 콘텐츠</h2>
+        <Link to="/sub">내가 찜한 콘텐츠</Link>
         <StyledBtnWrapper>
           <button onClick={handleClick} id="1">
             #시험 끝나면 볼 영화
@@ -64,11 +65,16 @@ const StyledUserPick = styled.div`
     & > h2 {
       margin-bottom: 0.8rem;
     }
+    & > a {
+      text-decoration: none;
+      color: #ffffff;
+    }
   }
 `;
 
 const StyledBtnWrapper = styled.div`
   display: flex;
+  margin-top: 0.8rem;
   & > button {
     background: transparent;
     color: #ffffff;
