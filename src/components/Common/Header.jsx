@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { btn_bell, btn_more, btn_search, img_profile, Netflix_logo } from 'assets';
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollListener = () => {
+    setIsScrolled(window.scrollY > 0);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', scrollListener);
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    };
+  }, []);
+
   return (
-    <StyledHeader>
+    <StyledHeader className={isScrolled ? 'scrolled' : undefined}>
       <StyledLeft>
         <Link to="/">
           <img src={Netflix_logo} />
@@ -44,6 +55,10 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0));
+
+  &.scrolled {
+    background: rgba(20, 20, 20, 1);
+  }
 `;
 
 const StyledLeft = styled.div`
