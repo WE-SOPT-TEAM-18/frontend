@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import MovieData from './MovieData';
-// import Top10Data from './Top10Data';
 
 const RecommentWrapper = styled.div`
   margin: 0 auto;
@@ -39,9 +38,6 @@ const UserRecommend = () => {
   return (
     <RecommentWrapper>
       <div className="recommend">
-        {/* {top10.map((a, i) => {
-          return <Top10 top10={top10[i]} key={i} />;
-        })} */}
         {movies.map((a, i) => {
           return <Category movies={movies[i]} key={i} />;
         })}
@@ -49,15 +45,6 @@ const UserRecommend = () => {
     </RecommentWrapper>
   );
 };
-
-// function Top10(props) {
-//   return (
-//     <div className="recommend__top10">
-//       <img className="recommend__number" src={props.image} />
-//       <img className="recommend__image" src={props.imageMovie} />
-//     </div>
-//   );
-// }
 
 function Category(props) {
   console.log(props.movies);
