@@ -27,7 +27,7 @@ const Billboard = () => {
 export default Billboard;
 
 const StyledBillboard = styled.div`
-  box-shadow: inset 0 -33rem 8rem #141414;
+  background: linear-gradient(to top, rgba(20, 20, 20, 1) 25%, rgba(0, 0, 0, 0));
   margin-bottom: -27.7rem;
 `;
 
