@@ -5,7 +5,7 @@ import WatchingContent from './WatchingContent';
 import Content from './Content';
 
 const UserPick = () => {
-  const [current, setCurrent] = useState('2');
+  const [current, setCurrent] = useState('sad');
   const [prev, setPrev] = useState(null);
 
   const handleClick = (e) => {
@@ -36,22 +36,22 @@ const UserPick = () => {
         <Link to="/sub">내가 찜한 콘텐츠</Link>
         <StyledBox>
           <StyledBtnWrapper>
-            <button onClick={handleClick} id="1">
+            <button onClick={handleClick} id="test">
               #시험 끝나면 볼 영화
             </button>
-            <button onClick={handleClick} id="2">
+            <button onClick={handleClick} id="sad">
               #슬픈 영화
             </button>
-            <button onClick={handleClick} id="3">
+            <button onClick={handleClick} id="series">
               #슬기로운 시리즈
             </button>
-            <button onClick={handleClick} id="4">
+            <button onClick={handleClick} id="peace">
               #마음의 평화
             </button>
-            <button onClick={handleClick} id="5">
+            <button onClick={handleClick} id="horror">
               #무서운거
             </button>
-            <button onClick={handleClick} id="6">
+            <button onClick={handleClick} id="food">
               #음식
             </button>
           </StyledBtnWrapper>
