@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WatchingContent from './WatchingContent';
-import Content from './Content';
 
 const UserPick = () => {
   const [current, setCurrent] = useState('sad');
@@ -27,9 +26,6 @@ const UserPick = () => {
   return (
     <StyledUserPick>
       <div>
-        <h2>박수아님이 시청중인 콘텐츠</h2>
-        {/* 임시 */}
-        <WatchingContent />
         <WatchingContent />
       </div>
       <div>
@@ -57,9 +53,7 @@ const UserPick = () => {
           </StyledBtnWrapper>
         </StyledBox>
         {/* 임시 */}
-        <Content />
-        <Content />
-        <Content />
+        {/* <Content /> */}
       </div>
     </StyledUserPick>
   );
@@ -68,6 +62,8 @@ const UserPick = () => {
 export default UserPick;
 
 const StyledUserPick = styled.div`
+  width: 100%;
+  overflow-x: hidden;
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
