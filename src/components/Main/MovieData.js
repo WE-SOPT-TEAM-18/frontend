@@ -1,63 +1,6 @@
-import {
-  number1,
-  number2,
-  number3,
-  number4,
-  number5,
-  number6,
-  number7,
-  number8,
-  RectangleGray_height,
-  RectangleGray_width,
-} from '../../assets/index';
+import { RectangleGray_width } from '../../assets/index';
 
 export default [
-  {
-    id: 0,
-    title: '오늘 한국의 TOP 10 콘텐츠',
-    imageNumber: [
-      {
-        id: 0,
-        image: number1,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 1,
-        image: number2,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 2,
-        image: number3,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 3,
-        image: number4,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 4,
-        image: number5,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 5,
-        image: number6,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 6,
-        image: number7,
-        imageMovie: RectangleGray_height,
-      },
-      {
-        id: 7,
-        image: number8,
-        imageMovie: RectangleGray_height,
-      },
-    ],
-  },
   {
     id: 1,
     title: '지금뜨는 콘텐츠',
