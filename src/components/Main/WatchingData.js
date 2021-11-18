@@ -2,7 +2,7 @@ import { RectangleGray_width } from 'assets/index';
 
 export default [
   {
-    id: 1,
+    id: 'watching',
     title: '박수아님이 시청중인 콘텐츠',
     imageNumber: [
       {

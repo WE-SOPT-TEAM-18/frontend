@@ -17,7 +17,7 @@ const WatchingContent = () => {
 };
 
 function Category(props) {
-  const totalSlide = 6;
+  const totalSlide = 3;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
@@ -42,7 +42,7 @@ function Category(props) {
   useEffect(() => {
     if (slideRef) {
       document.getElementById(props.movies.id).style.transition = 'all 1s ease-in-out';
-      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 15}%)`;
+      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 20}%)`;
     }
   }, [scrollState]);
   useEffect(() => {
