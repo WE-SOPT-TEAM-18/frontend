@@ -5,7 +5,7 @@ import { arrow_left_gray, arrow_right_gray } from '../../assets/index';
 
 const Top10List = () => {
   const [top10s] = useState(Top10Data);
-  const totalSlide = 6;
+  const totalSlide = 3;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
@@ -30,7 +30,7 @@ const Top10List = () => {
   useEffect(() => {
     if (slideRef) {
       document.getElementById('list').style.transition = 'all 1s ease-in-out';
-      document.getElementById('list').style.transform = `translateX(-${scrollState * 15}%)`;
+      document.getElementById('list').style.transform = `translateX(-${scrollState * 20}%)`;
     }
   }, [scrollState]);
   useEffect(() => {
