@@ -92,30 +92,34 @@ function MoviePost(props) {
 export default UserRecommend;
 
 const RecommendWrapper = styled.div`
-  margin: 0 auto;
-  width: 1100px;
+  width: 100%;
   overflow: hidden;
 
   .recommend {
+    padding: 1rem;
+    &__main {
+      overflow-x: hidden;
+    }
     &__contents {
-      font-size: 16px;
+      font-size: 1.6rem;
+      font-weight: 700;
     }
     &__detail {
       display: flex;
-      margin-top: 8px;
+      margin-top: 0.8rem;
     }
     &__movies {
       display: flex;
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
     }
     &__image {
       display: flex;
-      margin-right: 2px;
+      margin-right: 0.2rem;
     }
     &__number {
       display: flex;
       position: absolute;
-      padding-left: 55px;
+      padding-left: 5.5rem;
     }
     &__arrowLeft {
       animation-fill-mode: forwards;
@@ -123,7 +127,7 @@ const RecommendWrapper = styled.div`
       z-index: 100;
       float: left;
       position: relative;
-      margin-top: 8px;
+      margin-top: 0.8rem;
     }
     &__arrowRight {
       animation-fill-mode: forwards;
@@ -131,7 +135,7 @@ const RecommendWrapper = styled.div`
       cursor: pointer;
       float: right;
       position: relative;
-      margin-top: 1px;
+      margin-top: 0.1rem;
     }
   }
 `;
