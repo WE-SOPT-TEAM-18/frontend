@@ -12,6 +12,8 @@ export { default as ic_instagram } from './icons/ic_instagram.svg';
 export { default as ic_play } from './icons/ic_play.svg';
 export { default as ic_twitter } from './icons/ic_twitter.svg';
 export { default as ic_youtube } from './icons/ic_youtube.svg';
+export { default as arrow_right_gray } from './icons/arrow_right_gray.png';
+export { default as arrow_left_gray } from './icons/arrow_left_gray.svg';
 export { default as number1 } from './images/img_1.png';
 export { default as number2 } from './images/img_2.png';
 export { default as number3 } from './images/img_3.png';
