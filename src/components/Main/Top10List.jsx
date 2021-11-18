@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Top10Data from './Top10Data';
-import { arrow_left_gray, arrow_right_gray } from '../../assets/index';
+import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 
 const Top10List = () => {
   const [top10s] = useState(Top10Data);

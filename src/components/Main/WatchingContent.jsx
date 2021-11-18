@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
 import WatchingData from './WatchingData';
-import { arrow_left_gray, arrow_right_gray } from '../../assets/index';
+import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 
 const WatchingContent = () => {
   const [watching] = useState(WatchingData);
@@ -128,11 +128,6 @@ const StyledContent = styled.div`
       padding: 0;
       position: absolute;
       right: 0.5rem;
-    }
-    &__number {
-      display: flex;
-      position: absolute;
-      padding-left: 5.5rem;
     }
     &__arrowLeft {
       animation-fill-mode: forwards;

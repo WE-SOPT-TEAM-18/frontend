@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import MovieData from './MovieData';
-import { arrow_left_gray, arrow_right_gray } from '../../assets/index';
+import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 
 const UserRecommend = () => {
   const [movies] = useState(MovieData);
