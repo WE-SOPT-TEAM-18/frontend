@@ -84,12 +84,21 @@ export default Top10List;
 const Top10Wrapper = styled.div`
   width: 100%;
   overflow-x: hidden;
+  @media ${({ theme }) => theme.device.tablet} {
+    margin-top: 8.5rem;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-top: 23.5rem;
+  }
+
   .recommend {
     &__main {
       overflow-x: hidden;
     }
     &__contents {
       font-size: 1.6rem;
+      font-weight: 700;
+      padding-left: 1rem;
     }
     &__detail {
       display: flex;
