@@ -92,9 +92,9 @@ function MoviePost(props) {
       <button className="watching__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>
-      <StyledProgressBar>
-        <StyledProgressInner />
-      </StyledProgressBar>
+      <div className="watching__progress-bar">
+        <div className="watching__progress-inner"></div>
+      </div>
     </div>
   );
 }
@@ -108,20 +108,20 @@ const StyledContent = styled.div`
       overflow-x: hidden;
     }
     &__contents {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
     &__detail {
       display: flex;
-      margin-top: 8px;
+      margin-top: 0.8rem;
     }
     &__movies {
       display: flex;
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
       position: relative;
     }
     &__image {
       display: flex;
-      margin-right: 2px;
+      margin-right: 0.2rem;
     }
     &__heart {
       background: transparent;
@@ -132,7 +132,7 @@ const StyledContent = styled.div`
     &__number {
       display: flex;
       position: absolute;
-      padding-left: 55px;
+      padding-left: 5.5rem;
     }
     &__arrowLeft {
       animation-fill-mode: forwards;
@@ -140,7 +140,7 @@ const StyledContent = styled.div`
       z-index: 100;
       float: left;
       position: relative;
-      margin-top: 8px;
+      margin-top: 0.8rem;
     }
     &__arrowRight {
       animation-fill-mode: forwards;
@@ -148,25 +148,23 @@ const StyledContent = styled.div`
       cursor: pointer;
       float: right;
       position: relative;
-      margin-top: 1px;
+      margin-top: 0.1rem;
+    }
+    &__progress-bar {
+      width: 11.4rem;
+      height: 0.2rem;
+      position: absolute;
+      left: 3.6rem;
+      bottom: -0.5rem;
+      background-color: rgba(90, 91, 91, 1);
+    }
+    &__progress-inner {
+      width: 50%;
+      height: 0.2rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(211, 47, 39, 1);
     }
   }
-`;
-
-const StyledProgressBar = styled.div`
-  width: 11.4rem;
-  height: 0.2rem;
-  position: absolute;
-  left: 3.6rem;
-  bottom: -0.5rem;
-  background-color: rgba(90, 91, 91, 1);
-`;
-
-const StyledProgressInner = styled.div`
-  width: 50%;
-  height: 0.2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(211, 47, 39, 1);
 `;
