@@ -41,7 +41,7 @@ export default [
   },
   {
     id: 2,
-    title: '로맨틴 TV 코미디',
+    title: '로맨틱 TV 코미디',
     imageNumber: [
       {
         id: 0,
@@ -117,7 +117,7 @@ export default [
   },
   {
     id: 4,
-    title: '외국 TV 프로그램, 수상작',
+    title: '외국 TV 프로그램·수상작',
     imageNumber: [
       {
         id: 0,
@@ -155,7 +155,7 @@ export default [
   },
   {
     id: 5,
-    title: '한국 TV 프로그램, 수상작',
+    title: '한국 TV 프로그램·수상작',
     imageNumber: [
       {
         id: 0,
@@ -193,7 +193,7 @@ export default [
   },
   {
     id: 6,
-    title: 'TV 드라마, 로맨스',
+    title: 'TV 드라마·로맨스',
     imageNumber: [
       {
         id: 0,
