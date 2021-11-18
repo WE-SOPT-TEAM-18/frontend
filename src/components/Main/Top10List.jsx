@@ -1,22 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import MovieData from './MovieData';
+import Top10Data from './Top10Data';
 import { arrow_left_gray, arrow_right_gray } from '../../assets/index';
 
-const UserRecommend = () => {
-  const [movies] = useState(MovieData);
-  return (
-    <RecommendWrapper>
-      <div className="recommend">
-        {movies.map((a, i) => {
-          return <Category movies={movies[i]} key={i} />;
-        })}
-      </div>
-    </RecommendWrapper>
-  );
-};
-
-function Category(props) {
+const Top10List = () => {
+  const [top10s] = useState(Top10Data);
   const totalSlide = 6;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
@@ -41,8 +29,8 @@ function Category(props) {
 
   useEffect(() => {
     if (slideRef) {
-      document.getElementById(props.movies.id).style.transition = 'all 1s ease-in-out';
-      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 15}%)`;
+      document.getElementById('list').style.transition = 'all 1s ease-in-out';
+      document.getElementById('list').style.transform = `translateX(-${scrollState * 15}%)`;
     }
   }, [scrollState]);
   useEffect(() => {
@@ -52,46 +40,48 @@ function Category(props) {
     }
     setLocalVisible(!scrollState);
   }, [localVisible, scrollState]);
-
   return (
-    <div className="recommend__main">
-      <div className="recommend__contents">{props.movies.title}</div>
-      {(!localVisible || animation) && (
+    <Top10Wrapper>
+      <div className="recommend">
+        <div className="recommend__contents">오늘 한국의 TOP 10 콘텐츠</div>
+        {(!localVisible || animation) && (
+          <img
+            className="recommend__arrowLeft"
+            src={arrow_left_gray}
+            onClick={() => {
+              prevButton();
+            }}
+          />
+        )}
         <img
-          className="recommend__arrowLeft"
-          src={arrow_left_gray}
+          className="recommend__arrowRight"
+          src={arrow_right_gray}
           onClick={() => {
-            prevButton();
+            nextButton();
           }}
         />
-      )}
-      <img
-        className="recommend__arrowRight"
-        src={arrow_right_gray}
-        onClick={() => {
-          nextButton();
-        }}
-      />
-      <div className="recommend__detail" id={props.movies.id}>
-        {props.movies.imageNumber.map((a, i) => {
-          return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
-        })}
+        <div className="recommend__detail" id="list">
+          {top10s.map((a, i) => {
+            return <Top10Movies top10s={top10s[i]} key={i} />;
+          })}
+        </div>
       </div>
-    </div>
+    </Top10Wrapper>
   );
-}
+};
 
-function MoviePost(props) {
+function Top10Movies(props) {
   return (
     <div className="recommend__movies">
-      <img className="recommend__image" src={props.post.image} />
+      <img className="recommend__number" src={props.top10s.image} />
+      <img className="recommend__image" src={props.top10s.imageMovie} />
     </div>
   );
 }
 
-export default UserRecommend;
+export default Top10List;
 
-const RecommendWrapper = styled.div`
+const Top10Wrapper = styled.div`
   margin: 0 auto;
   width: 1100px;
   overflow: hidden;
@@ -110,12 +100,12 @@ const RecommendWrapper = styled.div`
     }
     &__image {
       display: flex;
-      margin-right: 2px;
+      position: relative;
+      margin-left: 70px;
     }
     &__number {
       display: flex;
       position: absolute;
-      padding-left: 55px;
     }
     &__arrowLeft {
       animation-fill-mode: forwards;
@@ -123,7 +113,7 @@ const RecommendWrapper = styled.div`
       z-index: 100;
       float: left;
       position: relative;
-      margin-top: 8px;
+      height: 143px;
     }
     &__arrowRight {
       animation-fill-mode: forwards;
@@ -131,7 +121,7 @@ const RecommendWrapper = styled.div`
       cursor: pointer;
       float: right;
       position: relative;
-      margin-top: 1px;
+      height: 143px;
     }
   }
 `;
