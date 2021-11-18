@@ -82,26 +82,27 @@ function Top10Movies(props) {
 export default Top10List;
 
 const Top10Wrapper = styled.div`
-  margin: 0 auto;
-  width: 1100px;
-  overflow: hidden;
-
+  width: 100%;
+  overflow-x: hidden;
   .recommend {
+    &__main {
+      overflow-x: hidden;
+    }
     &__contents {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
     &__detail {
       display: flex;
-      margin-top: 8px;
+      margin-top: 0.8rem;
     }
     &__movies {
       display: flex;
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
     }
     &__image {
       display: flex;
       position: relative;
-      margin-left: 70px;
+      margin-left: 7rem;
     }
     &__number {
       display: flex;
@@ -113,7 +114,7 @@ const Top10Wrapper = styled.div`
       z-index: 100;
       float: left;
       position: relative;
-      height: 143px;
+      height: 14.3rem;
     }
     &__arrowRight {
       animation-fill-mode: forwards;
@@ -121,7 +122,7 @@ const Top10Wrapper = styled.div`
       cursor: pointer;
       float: right;
       position: relative;
-      height: 143px;
+      height: 14.3rem;
     }
   }
 `;
