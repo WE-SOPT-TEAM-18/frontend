@@ -79,7 +79,7 @@ const StyledBtnWrapper = styled.div`
   & > button {
     font-weight: 500;
     font-size: 1.5rem;
-    border-radius: 2px;
+    border-radius: 0.2rem;
     padding: 1.1rem 2.3rem;
     display: flex;
     align-items: center;
