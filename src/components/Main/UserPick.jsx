@@ -60,6 +60,17 @@ const StyledUserPick = styled.div`
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
+  top: 50.8rem;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    position: relative;
+    top: 8.5rem;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    top: 23.5rem;
+  }
+
   & > div {
     margin-bottom: 3rem;
     & > h2 {

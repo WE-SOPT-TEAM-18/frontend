@@ -29,12 +29,24 @@ export default Billboard;
 const StyledBillboard = styled.div`
   background: linear-gradient(to top, rgba(20, 20, 20, 1) 25%, rgba(0, 0, 0, 0));
   margin-bottom: -27.7rem;
+  overflow-x: hidden;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    background: linear-gradient(to top, rgba(20, 20, 20, 1) 1%, rgba(0, 0, 0, 0));
+  }
 `;
 
 const StyledMainImg = styled.img`
   width: 100%;
   z-index: -1;
   position: relative;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 37.3rem;
+    width: auto;
+    overflow-x: hidden;
+    transform: translateX(-8.3rem);
+  }
 `;
 
 const StyledTitleImg = styled.img`
@@ -43,6 +55,10 @@ const StyledTitleImg = styled.img`
   left: 40rem;
   width: 25.9rem;
   height: 9.5rem;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    display: none;
+  }
 `;
 
 const StyledBtnWrapper = styled.div`
@@ -50,6 +66,15 @@ const StyledBtnWrapper = styled.div`
   top: 39.2rem;
   left: 40rem;
   display: flex;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    top: 23.5rem;
+    left: 2.9rem;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    left: 1.4rem;
+  }
 
   & > button {
     font-weight: 500;
