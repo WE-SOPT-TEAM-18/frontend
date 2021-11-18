@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import WatchingContent from './WatchingContent';
+import Content from './Content';
 
 const UserPick = () => {
   const [current, setCurrent] = useState('2');
@@ -26,6 +28,9 @@ const UserPick = () => {
     <StyledUserPick>
       <div>
         <h2>박수아님이 시청중인 콘텐츠</h2>
+        {/* 임시 */}
+        <WatchingContent />
+        <WatchingContent />
       </div>
       <div>
         <Link to="/sub">내가 찜한 콘텐츠</Link>
@@ -49,6 +54,10 @@ const UserPick = () => {
             #음식
           </button>
         </StyledBtnWrapper>
+        {/* 임시 */}
+        <Content />
+        <Content />
+        <Content />
       </div>
     </StyledUserPick>
   );
