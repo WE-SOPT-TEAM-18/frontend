@@ -82,7 +82,7 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(props.post.like);
   const handleHeartClick = () => {
     setLike(!like);
   };
