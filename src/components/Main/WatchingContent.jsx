@@ -93,7 +93,10 @@ function MoviePost(props) {
         <img src={like ? heart_filled : heart_white} />
       </button>
       <div className="watching__progress-bar">
-        <div className="watching__progress-inner"></div>
+        <div
+          className="watching__progress-inner"
+          percent={props.post.percent}
+          style={{ width: `${props.post.percent}%` }}></div>
       </div>
     </div>
   );
@@ -154,7 +157,6 @@ const StyledContent = styled.div`
       background-color: rgba(90, 91, 91, 1);
     }
     &__progress-inner {
-      width: 50%;
       height: 0.2rem;
       position: absolute;
       top: 0;
