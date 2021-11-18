@@ -34,26 +34,28 @@ const UserPick = () => {
       </div>
       <div>
         <Link to="/sub">내가 찜한 콘텐츠</Link>
-        <StyledBtnWrapper>
-          <button onClick={handleClick} id="1">
-            #시험 끝나면 볼 영화
-          </button>
-          <button onClick={handleClick} id="2">
-            #슬픈 영화
-          </button>
-          <button onClick={handleClick} id="3">
-            #슬기로운 시리즈
-          </button>
-          <button onClick={handleClick} id="4">
-            #마음의 평화
-          </button>
-          <button onClick={handleClick} id="5">
-            #무서운거
-          </button>
-          <button onClick={handleClick} id="6">
-            #음식
-          </button>
-        </StyledBtnWrapper>
+        <StyledBox>
+          <StyledBtnWrapper>
+            <button onClick={handleClick} id="1">
+              #시험 끝나면 볼 영화
+            </button>
+            <button onClick={handleClick} id="2">
+              #슬픈 영화
+            </button>
+            <button onClick={handleClick} id="3">
+              #슬기로운 시리즈
+            </button>
+            <button onClick={handleClick} id="4">
+              #마음의 평화
+            </button>
+            <button onClick={handleClick} id="5">
+              #무서운거
+            </button>
+            <button onClick={handleClick} id="6">
+              #음식
+            </button>
+          </StyledBtnWrapper>
+        </StyledBox>
         {/* 임시 */}
         <Content />
         <Content />
@@ -92,8 +94,14 @@ const StyledUserPick = styled.div`
   }
 `;
 
+const StyledBox = styled.div`
+  overflow-x: auto;
+`;
+
 const StyledBtnWrapper = styled.div`
   display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
   margin-top: 0.8rem;
   & > button {
     background: transparent;
