@@ -3,63 +3,16 @@ import styled from 'styled-components';
 import MovieData from './MovieData';
 import { arrow_left_gray, arrow_right_gray } from '../../assets/index';
 
-const RecommentWrapper = styled.div`
-  margin: 0 auto;
-  width: 1100px;
-  overflow: hidden;
-
-  .recommend {
-    &__main {
-    }
-    &__contents {
-      font-size: 16px;
-    }
-    &__detail {
-      display: flex;
-      margin-top: 8px;
-    }
-    &__movies {
-      display: flex;
-      margin-bottom: 30px;
-    }
-    &__image {
-      display: flex;
-      margin-right: 2px;
-    }
-    &__number {
-      display: flex;
-      position: absolute;
-      padding-left: 55px;
-    }
-    &__arrowLeft {
-      animation-fill-mode: forwards;
-      cursor: pointer;
-      z-index: 100;
-      float: left;
-      position: relative;
-      margin-top: 8px;
-    }
-    &__arrowRight {
-      animation-fill-mode: forwards;
-      z-index: 100;
-      cursor: pointer;
-      float: right;
-      position: relative;
-      margin-top: 1px;
-    }
-  }
-`;
-
 const UserRecommend = () => {
   const [movies] = useState(MovieData);
   return (
-    <RecommentWrapper>
+    <RecommendWrapper>
       <div className="recommend">
         {movies.map((a, i) => {
           return <Category movies={movies[i]} key={i} />;
         })}
       </div>
-    </RecommentWrapper>
+    </RecommendWrapper>
   );
 };
 
@@ -137,3 +90,48 @@ function MoviePost(props) {
 }
 
 export default UserRecommend;
+
+const RecommendWrapper = styled.div`
+  margin: 0 auto;
+  width: 1100px;
+  overflow: hidden;
+
+  .recommend {
+    &__contents {
+      font-size: 16px;
+    }
+    &__detail {
+      display: flex;
+      margin-top: 8px;
+    }
+    &__movies {
+      display: flex;
+      margin-bottom: 30px;
+    }
+    &__image {
+      display: flex;
+      margin-right: 2px;
+    }
+    &__number {
+      display: flex;
+      position: absolute;
+      padding-left: 55px;
+    }
+    &__arrowLeft {
+      animation-fill-mode: forwards;
+      cursor: pointer;
+      z-index: 100;
+      float: left;
+      position: relative;
+      margin-top: 8px;
+    }
+    &__arrowRight {
+      animation-fill-mode: forwards;
+      z-index: 100;
+      cursor: pointer;
+      float: right;
+      position: relative;
+      margin-top: 1px;
+    }
+  }
+`;
