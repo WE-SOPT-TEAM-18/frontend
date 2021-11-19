@@ -125,7 +125,7 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(true);
+  const [like, setLike] = useState(props.post.like);
   const handleHeartClick = () => {
     setLike(!like);
   };
@@ -192,6 +192,11 @@ const StyledContent = styled.div`
 
 const StyledBox = styled.div`
   overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const StyledBtnWrapper = styled.div`
