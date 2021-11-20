@@ -4,8 +4,6 @@ export { default as btn_right } from './icons/btn_right.svg';
 export { default as btn_search } from './icons/btn_search.svg';
 export { default as heart_filled } from './icons/heart_filled.svg';
 export { default as heart_white } from './icons/heart_white.svg';
-export { default as ic_arrow_left } from './icons/ic_arrow_left.svg';
-export { default as ic_arrow_right } from './icons/ic_arrow_right.svg';
 export { default as ic_dropdown } from './icons/ic_dropdown.svg';
 export { default as ic_facebook } from './icons/ic_facebook.svg';
 export { default as ic_info } from './icons/ic_info.svg';
