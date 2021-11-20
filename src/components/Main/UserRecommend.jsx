@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import MovieData from './MovieData';
+import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 
 const UserRecommend = () => {
@@ -17,7 +18,7 @@ const UserRecommend = () => {
 };
 
 function Category(props) {
-  const totalSlide = 3;
+  const totalSlide = 4;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
@@ -82,9 +83,16 @@ function Category(props) {
 }
 
 function MoviePost(props) {
+  const [like, setLike] = useState(props.post.like);
+  const handleHeartClick = () => {
+    setLike(!like);
+  };
   return (
     <div className="recommend__movies">
       <img className="recommend__image" src={props.post.image} />
+      <button className="recommend__heart" onClick={handleHeartClick}>
+        <img src={like ? heart_filled : heart_white} />
+      </button>
     </div>
   );
 }
@@ -111,10 +119,17 @@ const RecommendWrapper = styled.div`
     &__movies {
       display: flex;
       margin-bottom: 3rem;
+      position: relative;
     }
     &__image {
       display: flex;
       margin-right: 0.2rem;
+    }
+    &__heart {
+      background: transparent;
+      padding: 0;
+      position: absolute;
+      right: 0.5rem;
     }
     &__number {
       display: flex;
