@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Top10Data from './Top10Data';
+import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 
 const Top10List = () => {
@@ -71,10 +72,17 @@ const Top10List = () => {
 };
 
 function Top10Movies(props) {
+  const [like, setLike] = useState(props.top10s.like);
+  const handleHeartClick = () => {
+    setLike(!like);
+  };
   return (
     <div className="recommend__movies">
       <img className="recommend__number" src={props.top10s.image} />
       <img className="recommend__image" src={props.top10s.imageMovie} />
+      <button className="recommend__heart" onClick={handleHeartClick}>
+        <img src={like ? heart_filled : heart_white} />
+      </button>
     </div>
   );
 }
@@ -90,7 +98,6 @@ const Top10Wrapper = styled.div`
   @media ${({ theme }) => theme.device.mobile} {
     margin-top: 23.5rem;
   }
-
   .recommend {
     &__main {
       overflow-x: hidden;
@@ -105,6 +112,7 @@ const Top10Wrapper = styled.div`
       margin-top: 0.8rem;
     }
     &__movies {
+      position: relative;
       display: flex;
       margin-bottom: 3rem;
     }
@@ -112,6 +120,12 @@ const Top10Wrapper = styled.div`
       display: flex;
       position: relative;
       margin-left: 7rem;
+    }
+    &__heart {
+      background: transparent;
+      padding: 0;
+      position: absolute;
+      right: 0.5rem;
     }
     &__number {
       display: flex;
