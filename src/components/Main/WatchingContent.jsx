@@ -1,18 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import MovieData from './MovieData';
+import { heart_filled, heart_white } from 'assets';
+import WatchingData from './WatchingData';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 
-const UserRecommend = () => {
-  const [movies] = useState(MovieData);
+const WatchingContent = () => {
+  const [watching] = useState(WatchingData);
+
   return (
-    <RecommendWrapper>
-      <div className="recommend">
-        {movies.map((a, i) => {
-          return <Category movies={movies[i]} key={i} />;
-        })}
-      </div>
-    </RecommendWrapper>
+    <StyledContent>
+      {watching.map((a, i) => {
+        return <Category movies={watching[i]} key={i} />;
+      })}
+    </StyledContent>
   );
 };
 
@@ -54,11 +54,11 @@ function Category(props) {
   }, [localVisible, scrollState]);
 
   return (
-    <div className="recommend__main">
-      <div className="recommend__contents">{props.movies.title}</div>
+    <div className="watching__main">
+      <div className="watching__contents">{props.movies.title}</div>
       {(!localVisible || animation) && (
         <img
-          className="recommend__arrowLeft"
+          className="watching__arrowLeft"
           src={arrow_left_gray}
           onClick={() => {
             prevButton();
@@ -66,13 +66,13 @@ function Category(props) {
         />
       )}
       <img
-        className="recommend__arrowRight"
+        className="watching__arrowRight"
         src={arrow_right_gray}
         onClick={() => {
           nextButton();
         }}
       />
-      <div className="recommend__detail" id={props.movies.id}>
+      <div className="watching__detail" id={props.movies.id}>
         {props.movies.imageNumber.map((a, i) => {
           return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
         })}
@@ -82,27 +82,36 @@ function Category(props) {
 }
 
 function MoviePost(props) {
+  const [like, setLike] = useState(props.post.like);
+  const handleHeartClick = () => {
+    setLike(!like);
+  };
   return (
-    <div className="recommend__movies">
-      <img className="recommend__image" src={props.post.image} />
+    <div className="watching__movies">
+      <img className="watching__image" src={props.post.image} />
+      <button className="watching__heart" onClick={handleHeartClick}>
+        <img src={like ? heart_filled : heart_white} />
+      </button>
+      <div className="watching__progress-bar">
+        <div
+          className="watching__progress-inner"
+          percent={props.post.percent}
+          style={{ width: `${props.post.percent}%` }}></div>
+      </div>
     </div>
   );
 }
 
-export default UserRecommend;
+export default WatchingContent;
 
-const RecommendWrapper = styled.div`
+const StyledContent = styled.div`
   width: 100%;
-  overflow: hidden;
-
-  .recommend {
-    padding: 1rem;
+  .watching {
     &__main {
       overflow-x: hidden;
     }
     &__contents {
       font-size: 1.6rem;
-      font-weight: 700;
     }
     &__detail {
       display: flex;
@@ -111,15 +120,17 @@ const RecommendWrapper = styled.div`
     &__movies {
       display: flex;
       margin-bottom: 3rem;
+      position: relative;
     }
     &__image {
       display: flex;
       margin-right: 0.2rem;
     }
-    &__number {
-      display: flex;
+    &__heart {
+      background: transparent;
+      padding: 0;
       position: absolute;
-      padding-left: 5.5rem;
+      right: 0.5rem;
     }
     &__arrowLeft {
       animation-fill-mode: forwards;
@@ -136,6 +147,21 @@ const RecommendWrapper = styled.div`
       float: right;
       position: relative;
       margin-top: 0.1rem;
+    }
+    &__progress-bar {
+      width: 11.4rem;
+      height: 0.2rem;
+      position: absolute;
+      left: 3.6rem;
+      bottom: -0.5rem;
+      background-color: rgba(90, 91, 91, 1);
+    }
+    &__progress-inner {
+      height: 0.2rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(211, 47, 39, 1);
     }
   }
 `;

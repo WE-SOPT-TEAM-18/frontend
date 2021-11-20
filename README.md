@@ -35,6 +35,56 @@
 "web-vitals": "^1.0.1"
 ```
 
+## 📂 폴더 구조
+```
+📦.git
+ ┗ ...
+📦.vscode
+ ┗ 📜settings.json
+📦public
+ ┗ 📜index.html
+📦src
+ ┣ 📂assets
+ ┃ ┣ 📂icons
+ ┃ ┃ ┗ 📜~.svg
+ ┃ ┗ 📂images
+ ┃ ┃ ┗ 📜~.png
+ ┃ ┗ 📜index.js
+ ┣ 📂components
+ ┃ ┣ 📂Common
+ ┃ ┃ ┣ 📜Footer.jsx
+ ┃ ┃ ┣ 📜GlobalStyle.js
+ ┃ ┃ ┣ 📜Header.jsx
+ ┃ ┃ ┣ 📜Router.jsx
+ ┃ ┃ ┗ 📜theme.js
+ ┃ ┣ 📂Main
+ ┃ ┃ ┣ 📜Billboard.jsx
+ ┃ ┃ ┣ 📜HeartContent.jsx
+ ┃ ┃ ┣ 📜HeartData.js
+ ┃ ┃ ┣ 📜MovieData.js
+ ┃ ┃ ┣ 📜Top10Data.js
+ ┃ ┃ ┣ 📜Top10List.jsx
+ ┃ ┃ ┣ 📜UserPick.jsx
+ ┃ ┃ ┣ 📜UserRecommend.jsx
+ ┃ ┃ ┣ 📜WatchingContent.jsx
+ ┃ ┃ ┗ 📜WatchingData.js
+ ┃ ┣ 📂Sub
+ ┃ ┃ ┣ 📜LikeData.js
+ ┃ ┃ ┗ 📜LikeFiles.jsx
+ ┣ 📂pages
+ ┃ ┣ 📜Main.jsx
+ ┃ ┗ 📜Sub.jsx
+ ┣ 📜App.jsx
+ ┗ 📜index.js
+📜.eslintrc.js
+📜.gitignore
+📜.prettierrc
+📜jsconfig.json
+📜package.json
+📜README.md
+📜yarn.lock
+```
+
 ## 🙋🏻‍♀️ 개발자 소개
 |김효인|백지연|안채량|
 |-|-|-|
