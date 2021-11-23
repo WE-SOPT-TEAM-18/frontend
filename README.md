@@ -2,7 +2,11 @@
 29기 WE SOPT 합동 세미나 18조
 
 ## 📌 Convention
-- Prettier + ESLint로 Code Convention 설정
+- Code Convention
+  - eslint, prettier 사용
+  - 변수, 함수 Camel case 기본, 파일 이름(컴포넌트만) 대문자 시작
+  - styled-components : 코드 하단에 작성하기, px 대신 rem 사용하기
+  
 - Commit Message Convention
 
   ```
@@ -85,7 +89,7 @@
 📜yarn.lock
 ```
 
-## 🙋🏻‍♀️ 개발자 소개
+## ❤ 개발자 소개
 |김효인|백지연|안채량|
 |-|-|-|
 |[@Hyoin-Kim](https://github.com/Hyoin-Kim)|[@100Gyeon](https://github.com/100Gyeon)|[@Ryammie](https://github.com/Ryammie)|
