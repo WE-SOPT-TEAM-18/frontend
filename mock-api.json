@@ -7,21 +7,21 @@
       {
         "contentId": 1,
         "title": "서울역",
-        "image": "imageURL/서울역",
+        "image": "RectangleGray_width",
         "percent": 50,
         "isLiked": true
       },
       {
         "contentId": 4,
         "title": "안시성",
-        "image": "imageURL/안시성",
+        "image": "RectangleGray_width",
         "percent": 10,
         "isLiked": true
       },
       {
         "contentId": 3,
         "title": "공작",
-        "image": "imageURL/공작",
+        "image": "RectangleGray_width",
         "percent": 20,
         "isLiked": false
       }
@@ -35,20 +35,20 @@
       {
         "contentId": 38,
         "title": "백두산",
-        "imageRow": "imageURL/백두산",
-        "imageColumn": "imageURL/백두산"
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
       },
       {
         "contentId": 3,
         "title": "극한직업",
-        "imageRow": "imageURL/극한직업",
-        "imageColumn": "imageURL/극한직업"
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
       },
       {
         "contentId": 334,
         "title": "슬기로운 의사생활",
-        "imageRow": "imageURL/슬기로운 의사생활",
-        "imageColumn": "imageURL/슬기로운 의사생활"
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
       }
     ]
   }
