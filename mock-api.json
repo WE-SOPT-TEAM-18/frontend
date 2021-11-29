@@ -1,0 +1,55 @@
+{
+  "watching": {
+    "status": 200,
+    "success": true,
+    "message": "시청 중인 콘텐츠 가져오기 성공",
+    "data": [
+      {
+        "contentId": 1,
+        "title": "서울역",
+        "image": "imageURL/서울역",
+        "percent": 50,
+        "isLiked": true
+      },
+      {
+        "contentId": 4,
+        "title": "안시성",
+        "image": "imageURL/안시성",
+        "percent": 10,
+        "isLiked": true
+      },
+      {
+        "contentId": 3,
+        "title": "공작",
+        "image": "imageURL/공작",
+        "percent": 20,
+        "isLiked": false
+      }
+    ]
+  },
+  "like": {
+    "status": 200,
+    "success": true,
+    "message": "좋아요 누른 컨텐츠 조회 성공",
+    "data": [
+      {
+        "contentId": 38,
+        "title": "백두산",
+        "imageRow": "imageURL/백두산",
+        "imageColumn": "imageURL/백두산"
+      },
+      {
+        "contentId": 3,
+        "title": "극한직업",
+        "imageRow": "imageURL/극한직업",
+        "imageColumn": "imageURL/극한직업"
+      },
+      {
+        "contentId": 334,
+        "title": "슬기로운 의사생활",
+        "imageRow": "imageURL/슬기로운 의사생활",
+        "imageColumn": "imageURL/슬기로운 의사생활"
+      }
+    ]
+  }
+}
