@@ -1,18 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
+// import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
-import HeartData from './HeartData';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { client } from 'libs/api';
+import { RectangleGray_width } from 'assets/index';
 
 const HeartContent = () => {
-  const [heart] = useState(HeartData);
+  const [list, setList] = useState([]);
+
+  const getHeartList = async () => {
+    const { data } = await client.get('/like');
+    setList(data.data);
+  };
+
+  useEffect(() => {
+    getHeartList();
+  }, []);
 
   return (
     <StyledContent>
-      {heart.map((a, i) => {
-        return <Category movies={heart[i]} key={i} />;
-      })}
+      <Category movies={list} />
     </StyledContent>
   );
 };
@@ -22,7 +31,7 @@ function Category(props) {
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
-  const slideRef = useRef(null);
+  // const slideRef = useRef(null);
   const [current, setCurrent] = useState('sad');
   const [prev, setPrev] = useState(null);
 
@@ -46,12 +55,13 @@ function Category(props) {
     setCurrent(e.target.id);
   };
 
-  useEffect(() => {
-    if (slideRef) {
-      document.getElementById(props.movies.id).style.transition = 'all 1s ease-in-out';
-      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 20}%)`;
-    }
-  }, [scrollState]);
+  // useEffect(() => {
+  //   if (slideRef) {
+  //     document.getElementById(props.movies.contentId).style.transition = 'all 1s ease-in-out';
+  //     document.getElementById(props.movies.conetntId).style.transform = `translateX(-${scrollState * 20}%)`;
+  //   }
+  // }, [scrollState]);
+
   useEffect(() => {
     if ((localVisible && scrollState) || (localVisible && !scrollState)) {
       setAnimation(true);
@@ -75,7 +85,7 @@ function Category(props) {
   return (
     <div className="heart__main">
       <Link to="/sub" className="heart__contents">
-        {props.movies.title}
+        내가 찜한 콘텐츠
       </Link>
       <StyledBox>
         <StyledBtnWrapper>
@@ -115,9 +125,9 @@ function Category(props) {
           nextButton();
         }}
       />
-      <div className="heart__detail" id={props.movies.id}>
-        {props.movies.imageNumber.map((a, i) => {
-          return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
+      <div className="heart__detail" id={props.movies.contentId}>
+        {props.movies.map((a, i) => {
+          return <MoviePost post={props.movies[i]} key={i} />;
         })}
       </div>
     </div>
@@ -125,13 +135,16 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(props.post.like);
+  // img 수정 후 console 삭제할 것
+  console.log(props);
+  const [like, setLike] = useState(true);
   const handleHeartClick = () => {
     setLike(!like);
   };
   return (
     <div className="heart__movies">
-      <img className="heart__image" src={props.post.image} />
+      {/* <img className="heart__image" src={props.post.imageRow} /> */}
+      <img className="heart__image" src={RectangleGray_width} />
       <button className="heart__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>

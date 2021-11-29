@@ -1,17 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+// import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
-import WatchingData from './WatchingData';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { client } from 'libs/api';
+import { RectangleGray_width } from 'assets/index';
 
 const WatchingContent = () => {
-  const [watching] = useState(WatchingData);
+  const [list, setList] = useState([]);
+
+  const getWatchingList = async () => {
+    const { data } = await client.get('/watching');
+    setList(data.data);
+  };
+
+  useEffect(() => {
+    getWatchingList();
+  }, []);
 
   return (
     <StyledContent>
-      {watching.map((a, i) => {
-        return <Category movies={watching[i]} key={i} />;
-      })}
+      <Category movies={list} />
     </StyledContent>
   );
 };
@@ -21,7 +30,7 @@ function Category(props) {
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
-  const slideRef = useRef(null);
+  // const slideRef = useRef(null);
 
   const prevButton = () => {
     if (scrollState === 0) {
@@ -39,12 +48,13 @@ function Category(props) {
     }
   };
 
-  useEffect(() => {
-    if (slideRef) {
-      document.getElementById(props.movies.id).style.transition = 'all 1s ease-in-out';
-      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 20}%)`;
-    }
-  }, [scrollState]);
+  // useEffect(() => {
+  //   if (slideRef) {
+  //     document.getElementById(props.movies.contentId).style.transition = 'all 1s ease-in-out';
+  //     document.getElementById(props.movies.contentId).style.transform = `translateX(-${scrollState * 20}%)`;
+  //   }
+  // }, [scrollState]);
+
   useEffect(() => {
     if ((localVisible && scrollState) || (localVisible && !scrollState)) {
       setAnimation(true);
@@ -55,7 +65,7 @@ function Category(props) {
 
   return (
     <div className="watching__main">
-      <div className="watching__contents">{props.movies.title}</div>
+      <div className="watching__contents">박수아님이 시청중인 콘텐츠</div>
       {(!localVisible || animation) && (
         <img
           className="watching__arrowLeft"
@@ -72,9 +82,9 @@ function Category(props) {
           nextButton();
         }}
       />
-      <div className="watching__detail" id={props.movies.id}>
-        {props.movies.imageNumber.map((a, i) => {
-          return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
+      <div className="watching__detail" id={props.movies.contentId}>
+        {props.movies.map((a, i) => {
+          return <MoviePost post={props.movies[i]} key={i} />;
         })}
       </div>
     </div>
@@ -82,13 +92,14 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(props.post.like);
+  const [like, setLike] = useState(props.post.isLiked);
   const handleHeartClick = () => {
     setLike(!like);
   };
   return (
     <div className="watching__movies">
-      <img className="watching__image" src={props.post.image} />
+      {/* <img className="watching__image" src={props.post.image} /> */}
+      <img className="watching__image" src={RectangleGray_width} />
       <button className="watching__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>
