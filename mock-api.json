@@ -12,7 +12,7 @@
         "isLiked": true
       },
       {
-        "contentId": 4,
+        "contentId": 2,
         "title": "안시성",
         "image": "RectangleGray_width",
         "percent": 10,
@@ -24,6 +24,41 @@
         "image": "RectangleGray_width",
         "percent": 20,
         "isLiked": false
+      },
+      {
+        "contentId": 4,
+        "title": "서울역",
+        "image": "RectangleGray_width",
+        "percent": 50,
+        "isLiked": true
+      },
+      {
+        "contentId": 5,
+        "title": "안시성",
+        "image": "RectangleGray_width",
+        "percent": 10,
+        "isLiked": true
+      },
+      {
+        "contentId": 6,
+        "title": "공작",
+        "image": "RectangleGray_width",
+        "percent": 20,
+        "isLiked": false
+      },
+      {
+        "contentId": 7,
+        "title": "서울역",
+        "image": "RectangleGray_width",
+        "percent": 50,
+        "isLiked": true
+      },
+      {
+        "contentId": 8,
+        "title": "안시성",
+        "image": "RectangleGray_width",
+        "percent": 10,
+        "isLiked": true
       }
     ]
   },
@@ -47,6 +82,36 @@
       {
         "contentId": 334,
         "title": "슬기로운 의사생활",
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
+      },
+      {
+        "contentId": 9,
+        "title": "백두산",
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
+      },
+      {
+        "contentId": 10,
+        "title": "극한직업",
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
+      },
+      {
+        "contentId": 11,
+        "title": "슬기로운 의사생활",
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
+      },
+      {
+        "contentId": 12,
+        "title": "백두산",
+        "imageRow": "RectangleGray_width",
+        "imageColumn": "RectangleGray_height"
+      },
+      {
+        "contentId": 13,
+        "title": "극한직업",
         "imageRow": "RectangleGray_width",
         "imageColumn": "RectangleGray_height"
       }
