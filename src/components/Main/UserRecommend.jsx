@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import MovieData from './MovieData';
-import { heart_filled, heart_white } from 'assets';
-import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { arrow_left_gray, arrow_right_gray, heart_filled, heart_white } from 'assets/index';
 import { listCategory } from 'libs/rank.api';
 import { client } from 'libs/api';
 
