@@ -24,7 +24,7 @@ const WatchingContent = () => {
 };
 
 function Category(props) {
-  const totalSlide = 3;
+  const totalSlide = 2;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
