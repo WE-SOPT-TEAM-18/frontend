@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import HeartContent from './HeartContent';
 import WatchingContent from './WatchingContent';
+import { client } from 'libs/api';
 
-const UserPick = () => {
+const UserPick = ({ flag, setFlag }) => {
+  const [watchingList, setWatchingList] = useState([]);
+  const [heartList, setHeartList] = useState([]);
+
+  const getWatchingList = async () => {
+    const { data } = await client.get('/watching');
+    setWatchingList(data.data);
+  };
+
+  const getHeartList = async () => {
+    const { data } = await client.get('/like');
+    setHeartList(data.data);
+  };
+
+  useEffect(() => {
+    getWatchingList();
+    getHeartList();
+  }, [flag]);
+
   return (
     <StyledUserPick>
-      <WatchingContent />
-      <HeartContent />
+      <WatchingContent setFlag={setFlag} watchingList={watchingList} />
+      <HeartContent setFlag={setFlag} heartList={heartList} />
     </StyledUserPick>
   );
 };
