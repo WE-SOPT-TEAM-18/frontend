@@ -129,7 +129,7 @@ function MoviePost(props) {
   return (
     <div className="heart__movies">
       <img className="heart__image" src={props.post.imageRow} />
-      <button className="heart__heart" onClick={handleHeartClick}>
+      <button className="heart__button" onClick={handleHeartClick}>
         <img src={heart_filled} />
       </button>
     </div>
@@ -162,7 +162,7 @@ const StyledContent = styled.div`
       display: flex;
       margin-right: 0.2rem;
     }
-    &__heart {
+    &__button {
       background: transparent;
       padding: 0;
       position: absolute;
