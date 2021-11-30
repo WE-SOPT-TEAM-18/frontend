@@ -1,31 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { heart_filled, heart_white } from 'assets';
+import { heart_filled } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { client } from 'libs/api';
 
-const HeartContent = () => {
-  const [list, setList] = useState([]);
-
-  const getHeartList = async () => {
-    const { data } = await client.get('/like');
-    setList(data.data);
-  };
-
-  useEffect(() => {
-    getHeartList();
-  }, []);
-
+const HeartContent = ({ setFlag, heartList }) => {
   return (
     <StyledContent>
-      <Category movies={list} />
+      <Category setFlag={setFlag} movies={heartList} />
     </StyledContent>
   );
 };
 
 function Category(props) {
-  const totalSlide = 14;
+  const totalSlide = 3;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
@@ -124,8 +113,8 @@ function Category(props) {
         }}
       />
       <div className="heart__detail" id="heart-list">
-        {props.movies.map((a, i) => {
-          return <MoviePost post={props.movies[i]} key={i} />;
+        {props.movies.map((movie, i) => {
+          return <MoviePost post={movie} setFlag={props.setFlag} key={i} />;
         })}
       </div>
     </div>
@@ -133,15 +122,15 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(true);
-  const handleHeartClick = () => {
-    setLike(!like);
+  const handleHeartClick = async () => {
+    await client.post(`/like/${props.post.contentId}`, props.post);
+    props.setFlag((prev) => !prev);
   };
   return (
     <div className="heart__movies">
       <img className="heart__image" src={props.post.imageRow} />
       <button className="heart__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
+        <img src={heart_filled} />
       </button>
     </div>
   );

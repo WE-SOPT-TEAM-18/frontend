@@ -4,21 +4,10 @@ import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { client } from 'libs/api';
 
-const WatchingContent = () => {
-  const [list, setList] = useState([]);
-
-  const getWatchingList = async () => {
-    const { data } = await client.get('/watching');
-    setList(data.data);
-  };
-
-  useEffect(() => {
-    getWatchingList();
-  }, []);
-
+const WatchingContent = ({ setFlag, watchingList }) => {
   return (
     <StyledContent>
-      <Category movies={list} />
+      <Category setFlag={setFlag} movies={watchingList} />
     </StyledContent>
   );
 };
@@ -81,8 +70,8 @@ function Category(props) {
         }}
       />
       <div className="watching__detail" id="watching-list">
-        {props.movies.map((a, i) => {
-          return <MoviePost post={props.movies[i]} key={i} />;
+        {props.movies.map((movie, i) => {
+          return <MoviePost post={movie} setFlag={props.setFlag} key={i} />;
         })}
       </div>
     </div>
@@ -90,15 +79,15 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(props.post.isLiked);
-  const handleHeartClick = () => {
-    setLike(!like);
+  const handleHeartClick = async () => {
+    await client.post(`/like/${props.post.contentId}`, props.post);
+    props.setFlag((prev) => !prev);
   };
   return (
     <div className="watching__movies">
       <img className="watching__image" src={props.post.image} />
       <button className="watching__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
+        <img src={props.post.isLiked ? heart_filled : heart_white} />
       </button>
       <div className="watching__progress-bar">
         <div
