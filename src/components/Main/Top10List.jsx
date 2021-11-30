@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { rank10Category } from 'libs/rank.api';
+import { client } from 'libs/api';
 
-const Top10List = () => {
+const Top10List = ({ setFlag }) => {
   const totalSlide = 5;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
@@ -71,13 +72,15 @@ const Top10List = () => {
           }}
         />
         <div className="recommend__detail" id="list">
-          {list?.map((a, i) => {
+          {list?.map((movie, i) => {
             return (
               <Top10Movies
+                setFlag={setFlag}
                 top10Image={list[i].image}
                 top10RankImage={list[i].rankImage}
-                top10Likes={list[i].isLikes}
+                top10Likes={list[i].isLiked}
                 key={list[i].rank}
+                post={movie}
               />
             );
           })}
@@ -88,16 +91,16 @@ const Top10List = () => {
 };
 
 function Top10Movies(props) {
-  const [like, setLike] = useState(props.top10Likes);
-  const handleHeartClick = () => {
-    setLike(!like);
+  const handleHeartClick = async () => {
+    await client.post(`/like/${props.post.contentId}`, props.post);
+    props.setFlag((prev) => !prev);
   };
   return (
     <div className="recommend__movies">
       <img className="recommend__number" src={props.top10RankImage} />
       <img className="recommend__image" src={props.top10Image} />
       <button className="recommend__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
+        <img src={props.top10Likes ? heart_filled : heart_white} />
       </button>
     </div>
   );

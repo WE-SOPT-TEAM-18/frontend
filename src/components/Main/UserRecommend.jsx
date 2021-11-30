@@ -4,14 +4,15 @@ import MovieData from './MovieData';
 import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { listCategory } from 'libs/rank.api';
+import { client } from 'libs/api';
 
-const UserRecommend = () => {
+const UserRecommend = ({ setFlag }) => {
   const [movies] = useState(MovieData);
   return (
     <RecommendWrapper>
       <div className="recommend">
         {movies.map((a, i) => {
-          return <Category movies={movies[i]} key={i} />;
+          return <Category setFlag={setFlag} movies={movies[i]} key={i} />;
         })}
       </div>
     </RecommendWrapper>
@@ -86,7 +87,15 @@ function Category(props) {
       />
       <div className="recommend__detail" id={props.movies.id}>
         {list?.map((a, i) => {
-          return <MoviePost postImage={list[i].image} likes={list[i].isLiked} key={list[i].contentId} />;
+          return (
+            <MoviePost
+              setFlag={props.setFlag}
+              postImage={list[i].image}
+              likes={list[i].isLiked}
+              key={list[i].contentId}
+              post={a}
+            />
+          );
         })}
       </div>
     </div>
@@ -94,15 +103,15 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(props.likes);
-  const handleHeartClick = () => {
-    setLike(!like);
+  const handleHeartClick = async () => {
+    await client.post(`/like/${props.post.contentId}`, props.post);
+    props.setFlag((prev) => !prev);
   };
   return (
     <div className="recommend__movies">
       <img className="recommend__image" src={props.postImage} />
       <button className="recommend__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
+        <img src={props.likes === true ? heart_filled : heart_white} />
       </button>
     </div>
   );
