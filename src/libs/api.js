@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const client = axios.create({
-  baseURL: 'http://localhost:4000/',
+  baseURL: 'https://asia-northeast3-cs-netflix.cloudfunctions.net/api',
   headers: {
     'Content-Type': 'application/json',
   },
