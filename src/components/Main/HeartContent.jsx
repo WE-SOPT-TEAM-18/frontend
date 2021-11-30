@@ -1,5 +1,4 @@
-// import React, { useState, useRef, useEffect } from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
@@ -30,7 +29,7 @@ function Category(props) {
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
-  // const slideRef = useRef(null);
+  const slideRef = useRef(null);
   const [current, setCurrent] = useState('sad');
   const [prev, setPrev] = useState(null);
 
@@ -54,12 +53,12 @@ function Category(props) {
     setCurrent(e.target.id);
   };
 
-  // useEffect(() => {
-  //   if (slideRef) {
-  //     document.getElementById(props.movies.contentId).style.transition = 'all 1s ease-in-out';
-  //     document.getElementById(props.movies.conetntId).style.transform = `translateX(-${scrollState * 20}%)`;
-  //   }
-  // }, [scrollState]);
+  useEffect(() => {
+    if (slideRef) {
+      document.getElementById('heart-list').style.transition = 'all 1s ease-in-out';
+      document.getElementById('heart-list').style.transform = `translateX(-${scrollState * 20}%)`;
+    }
+  }, [scrollState]);
 
   useEffect(() => {
     if ((localVisible && scrollState) || (localVisible && !scrollState)) {
@@ -124,7 +123,7 @@ function Category(props) {
           nextButton();
         }}
       />
-      <div className="heart__detail" id={props.movies.contentId}>
+      <div className="heart__detail" id="heart-list">
         {props.movies.map((a, i) => {
           return <MoviePost post={props.movies[i]} key={i} />;
         })}
