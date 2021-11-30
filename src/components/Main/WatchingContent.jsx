@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { client } from 'libs/api';
-import { RectangleGray_width } from 'assets/index';
 
 const WatchingContent = () => {
   const [list, setList] = useState([]);
@@ -98,8 +97,7 @@ function MoviePost(props) {
   };
   return (
     <div className="watching__movies">
-      {/* <img className="watching__image" src={props.post.image} /> */}
-      <img className="watching__image" src={RectangleGray_width} />
+      <img className="watching__image" src={props.post.image} />
       <button className="watching__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>

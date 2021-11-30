@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { client } from 'libs/api';
-import { RectangleGray_width } from 'assets/index';
 
 const HeartContent = () => {
   const [list, setList] = useState([]);
@@ -135,16 +134,13 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  // img 수정 후 console 삭제할 것
-  console.log(props);
   const [like, setLike] = useState(true);
   const handleHeartClick = () => {
     setLike(!like);
   };
   return (
     <div className="heart__movies">
-      {/* <img className="heart__image" src={props.post.imageRow} /> */}
-      <img className="heart__image" src={RectangleGray_width} />
+      <img className="heart__image" src={props.post.imageRow} />
       <button className="heart__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>
