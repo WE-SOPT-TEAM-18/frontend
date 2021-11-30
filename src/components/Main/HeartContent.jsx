@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { heart_filled } from 'assets';
-import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { heart_filled, arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { client } from 'libs/api';
 
 const HeartContent = ({ setFlag, heartList }) => {

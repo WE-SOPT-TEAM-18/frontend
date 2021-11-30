@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { heart_filled, heart_white } from 'assets';
-import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { heart_filled, heart_white, arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { client } from 'libs/api';
 
 const WatchingContent = ({ setFlag, watchingList }) => {
