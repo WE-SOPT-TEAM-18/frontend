@@ -15,15 +15,12 @@ export const rank10Category = async () => {
   }
 };
 
-const listCategory = async () => {
+export const listCategory = async () => {
   try {
-    const data = await instance.get('/content/3');
-    console.log('data', data.data.data);
-    return data;
+    const data = await instance.get('/content/1');
+    return data.data.data.contents;
   } catch (e) {
     console.log('[FAIL] Get data');
     return null;
   }
 };
-
-listCategory();

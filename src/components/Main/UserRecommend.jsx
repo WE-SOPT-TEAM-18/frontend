@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MovieData from './MovieData';
 import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { listCategory } from 'libs/rank.api';
 
 const UserRecommend = () => {
   const [movies] = useState(MovieData);
@@ -23,6 +24,16 @@ function Category(props) {
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
   const slideRef = useRef(null);
+  const [list, setList] = useState([]);
+
+  const categoryDataList = async () => {
+    const dataList = await listCategory();
+    setList(dataList);
+  };
+
+  useEffect(() => {
+    categoryDataList();
+  }, []);
 
   const prevButton = () => {
     if (scrollState === 0) {
@@ -74,8 +85,8 @@ function Category(props) {
         }}
       />
       <div className="recommend__detail" id={props.movies.id}>
-        {props.movies.imageNumber.map((a, i) => {
-          return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
+        {list?.map((a, i) => {
+          return <MoviePost postImage={list[i].image} likes={list[i].isLiked} key={list[i].contentId} />;
         })}
       </div>
     </div>
@@ -83,13 +94,13 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(props.post.like);
+  const [like, setLike] = useState(props.likes);
   const handleHeartClick = () => {
     setLike(!like);
   };
   return (
     <div className="recommend__movies">
-      <img className="recommend__image" src={props.post.image} />
+      <img className="recommend__image" src={props.postImage} />
       <button className="recommend__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>
