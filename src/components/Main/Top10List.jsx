@@ -1,16 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import Top10Data from './Top10Data';
 import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { rank10Category } from 'libs/rank.api';
 
 const Top10List = () => {
-  const [top10s] = useState(Top10Data);
-  const totalSlide = 3;
+  const totalSlide = 5;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
   const slideRef = useRef(null);
+  const [list, setList] = useState([]);
+
+  const rankDataList = async () => {
+    const rank10 = await rank10Category();
+    setList(rank10);
+  };
+
+  useEffect(() => {
+    rankDataList();
+  }, []);
 
   const prevButton = () => {
     if (scrollState === 0) {
@@ -62,8 +71,15 @@ const Top10List = () => {
           }}
         />
         <div className="recommend__detail" id="list">
-          {top10s.map((a, i) => {
-            return <Top10Movies top10s={top10s[i]} key={i} />;
+          {list?.map((a, i) => {
+            return (
+              <Top10Movies
+                top10Image={list[i].image}
+                top10RankImage={list[i].rankImage}
+                top10Likes={list[i].isLikes}
+                key={list[i].rank}
+              />
+            );
           })}
         </div>
       </div>
@@ -72,14 +88,14 @@ const Top10List = () => {
 };
 
 function Top10Movies(props) {
-  const [like, setLike] = useState(props.top10s.like);
+  const [like, setLike] = useState(props.top10Likes);
   const handleHeartClick = () => {
     setLike(!like);
   };
   return (
     <div className="recommend__movies">
-      <img className="recommend__number" src={props.top10s.image} />
-      <img className="recommend__image" src={props.top10s.imageMovie} />
+      <img className="recommend__number" src={props.top10RankImage} />
+      <img className="recommend__image" src={props.top10Image} />
       <button className="recommend__heart" onClick={handleHeartClick}>
         <img src={like ? heart_filled : heart_white} />
       </button>
