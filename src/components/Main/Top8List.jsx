@@ -1,16 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import Top10Data from './Top10Data';
-import { heart_filled, heart_white } from 'assets';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { rank10Category } from 'libs/rank.api';
 
-const Top10List = () => {
-  const [top10s] = useState(Top10Data);
-  const totalSlide = 3;
+const Top8List = ({ setFlag }) => {
+  const totalSlide = 1;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
   const slideRef = useRef(null);
+  const [list, setList] = useState([]);
+
+  const rankDataList = async () => {
+    const rank10 = await rank10Category();
+    setList(rank10);
+  };
+
+  useEffect(() => {
+    rankDataList();
+  }, []);
 
   const prevButton = () => {
     if (scrollState === 0) {
@@ -31,7 +39,7 @@ const Top10List = () => {
   useEffect(() => {
     if (slideRef) {
       document.getElementById('list').style.transition = 'all 1s ease-in-out';
-      document.getElementById('list').style.transform = `translateX(-${scrollState * 20}%)`;
+      document.getElementById('list').style.transform = `translateX(-${scrollState * 30}%)`;
     }
   }, [scrollState]);
   useEffect(() => {
@@ -42,7 +50,7 @@ const Top10List = () => {
     setLocalVisible(!scrollState);
   }, [localVisible, scrollState]);
   return (
-    <Top10Wrapper>
+    <Top8Wrapper>
       <div className="recommend">
         <div className="recommend__contents">오늘 한국의 TOP 10 콘텐츠</div>
         {(!localVisible || animation) && (
@@ -62,34 +70,36 @@ const Top10List = () => {
           }}
         />
         <div className="recommend__detail" id="list">
-          {top10s.map((a, i) => {
-            return <Top10Movies top10s={top10s[i]} key={i} />;
+          {list?.map((movie, i) => {
+            return (
+              <Top8Movies
+                setFlag={setFlag}
+                top8Image={list[i].image}
+                top8RankImage={list[i].rankImage}
+                top8Likes={list[i].isLiked}
+                key={list[i].rank}
+                post={movie}
+              />
+            );
           })}
         </div>
       </div>
-    </Top10Wrapper>
+    </Top8Wrapper>
   );
 };
 
-function Top10Movies(props) {
-  const [like, setLike] = useState(props.top10s.like);
-  const handleHeartClick = () => {
-    setLike(!like);
-  };
+function Top8Movies(props) {
   return (
     <div className="recommend__movies">
-      <img className="recommend__number" src={props.top10s.image} />
-      <img className="recommend__image" src={props.top10s.imageMovie} />
-      <button className="recommend__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
-      </button>
+      <img className="recommend__number" src={props.top8RankImage} />
+      <img className="recommend__image" src={props.top8Image} />
     </div>
   );
 }
 
-export default Top10List;
+export default Top8List;
 
-const Top10Wrapper = styled.div`
+const Top8Wrapper = styled.div`
   width: 100%;
   overflow-x: hidden;
   @media ${({ theme }) => theme.device.tablet} {
@@ -120,12 +130,6 @@ const Top10Wrapper = styled.div`
       display: flex;
       position: relative;
       margin-left: 7rem;
-    }
-    &__heart {
-      background: transparent;
-      padding: 0;
-      position: absolute;
-      right: 0.5rem;
     }
     &__number {
       display: flex;
