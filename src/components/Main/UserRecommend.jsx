@@ -102,7 +102,9 @@ function Category(props) {
 }
 
 function MoviePost(props) {
+  const [like, setLike] = useState(props.likes);
   const handleHeartClick = async () => {
+    setLike(!like);
     await client.post(`/like/${props.post.contentId}`, props.post);
     props.setFlag((prev) => !prev);
   };
@@ -110,7 +112,7 @@ function MoviePost(props) {
     <div className="recommend__movies">
       <img className="recommend__image" src={props.postImage} />
       <button className="recommend__heart" onClick={handleHeartClick}>
-        <img src={props.likes === true ? heart_filled : heart_white} />
+        <img src={like === true ? heart_filled : heart_white} />
       </button>
     </div>
   );

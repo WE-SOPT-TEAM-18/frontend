@@ -90,7 +90,9 @@ const Top10List = ({ setFlag }) => {
 };
 
 function Top10Movies(props) {
+  const [like, setLike] = useState(props.top10Likes);
   const handleHeartClick = async () => {
+    setLike(!like);
     await client.post(`/like/${props.post.contentId}`, props.post);
     props.setFlag((prev) => !prev);
   };
@@ -99,7 +101,7 @@ function Top10Movies(props) {
       <img className="recommend__number" src={props.top10RankImage} />
       <img className="recommend__image" src={props.top10Image} />
       <button className="recommend__heart" onClick={handleHeartClick}>
-        <img src={props.top10Likes ? heart_filled : heart_white} />
+        <img src={like ? heart_filled : heart_white} />
       </button>
     </div>
   );
