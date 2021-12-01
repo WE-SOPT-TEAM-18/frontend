@@ -1,18 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { heart_filled, heart_white } from 'assets';
-import HeartData from './HeartData';
-import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { heart_filled, arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { client } from 'libs/api';
 
-const HeartContent = () => {
-  const [heart] = useState(HeartData);
-
+const HeartContent = ({ setFlag, heartList }) => {
   return (
     <StyledContent>
-      {heart.map((a, i) => {
-        return <Category movies={heart[i]} key={i} />;
-      })}
+      <Category setFlag={setFlag} movies={heartList} />
     </StyledContent>
   );
 };
@@ -48,10 +43,11 @@ function Category(props) {
 
   useEffect(() => {
     if (slideRef) {
-      document.getElementById(props.movies.id).style.transition = 'all 1s ease-in-out';
-      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 20}%)`;
+      document.getElementById('heart-list').style.transition = 'all 1s ease-in-out';
+      document.getElementById('heart-list').style.transform = `translateX(-${scrollState * 20}%)`;
     }
   }, [scrollState]);
+
   useEffect(() => {
     if ((localVisible && scrollState) || (localVisible && !scrollState)) {
       setAnimation(true);
@@ -75,7 +71,7 @@ function Category(props) {
   return (
     <div className="heart__main">
       <Link to="/sub" className="heart__contents">
-        {props.movies.title}
+        내가 찜한 콘텐츠
       </Link>
       <StyledBox>
         <StyledBtnWrapper>
@@ -115,9 +111,9 @@ function Category(props) {
           nextButton();
         }}
       />
-      <div className="heart__detail" id={props.movies.id}>
-        {props.movies.imageNumber.map((a, i) => {
-          return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
+      <div className="heart__detail" id="heart-list">
+        {props.movies.map((movie, i) => {
+          return <MoviePost post={movie} setFlag={props.setFlag} key={i} />;
         })}
       </div>
     </div>
@@ -125,15 +121,15 @@ function Category(props) {
 }
 
 function MoviePost(props) {
-  const [like, setLike] = useState(props.post.like);
-  const handleHeartClick = () => {
-    setLike(!like);
+  const handleHeartClick = async () => {
+    await client.post(`/like/${props.post.contentId}`, props.post);
+    props.setFlag((prev) => !prev);
   };
   return (
     <div className="heart__movies">
-      <img className="heart__image" src={props.post.image} />
-      <button className="heart__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
+      <img className="heart__image" src={props.post.imageRow} />
+      <button className="heart__button" onClick={handleHeartClick}>
+        <img src={heart_filled} />
       </button>
     </div>
   );
@@ -165,7 +161,7 @@ const StyledContent = styled.div`
       display: flex;
       margin-right: 0.2rem;
     }
-    &__heart {
+    &__button {
       background: transparent;
       padding: 0;
       position: absolute;
