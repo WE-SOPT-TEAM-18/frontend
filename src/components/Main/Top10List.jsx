@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { arrow_left_gray, arrow_right_gray, heart_filled, heart_white } from 'assets/index';
+import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { rank10Category } from 'libs/rank.api';
-import { client } from 'libs/api';
 
 const Top10List = ({ setFlag }) => {
   const totalSlide = 5;
@@ -90,19 +89,11 @@ const Top10List = ({ setFlag }) => {
 };
 
 function Top10Movies(props) {
-  const [like, setLike] = useState(props.top10Likes);
-  const handleHeartClick = async () => {
-    setLike(!like);
-    await client.post(`/like/${props.post.contentId}`, props.post);
-    props.setFlag((prev) => !prev);
-  };
   return (
     <div className="recommend__movies">
       <img className="recommend__number" src={props.top10RankImage} />
       <img className="recommend__image" src={props.top10Image} />
-      <button className="recommend__heart" onClick={handleHeartClick}>
-        <img src={like ? heart_filled : heart_white} />
-      </button>
+      <button className="recommend__heart"></button>
     </div>
   );
 }
