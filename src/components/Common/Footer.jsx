@@ -41,31 +41,37 @@ const Footer = () => {
 export default Footer;
 
 const FooterIcon = styled.div`
-  width: 80px;
+  width: 60px;
   margin-top: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 `;
 
 const FooterList = styled.div`
   font-size: 11px;
   color: gray;
-  display: grid;
-  grid-template-columns: repeat(4, 3fr);
-  grid-gap: 10px;
+  & > ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+  }
 `;
+
 const FooterBtn = styled.div`
   font-size: 10px;
   color: none;
-  border-color: #808080;
-  border: 1px;
-  background-color: none;
+  & > button {
+    color: #808080;
+    border: 1px solid #808080;
+    background-color: transparent;
+    padding: 6px;
+  }
+
   margin-bottom: 9px;
   margin-top: 20px;
-  padding: 5px;
 `;
 const Description = styled.div`
   font-size: 11px;
-  line-height: 15px;
+  line-height: 17px;
   color: #808080;
   margin-top: 13px;
 `;
