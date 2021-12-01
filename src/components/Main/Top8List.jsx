@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { arrow_left_gray, arrow_right_gray } from 'assets/index';
 import { rank10Category } from 'libs/rank.api';
 
-const Top10List = ({ setFlag }) => {
-  const totalSlide = 5;
+const Top8List = ({ setFlag }) => {
+  const totalSlide = 1;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
@@ -39,7 +39,7 @@ const Top10List = ({ setFlag }) => {
   useEffect(() => {
     if (slideRef) {
       document.getElementById('list').style.transition = 'all 1s ease-in-out';
-      document.getElementById('list').style.transform = `translateX(-${scrollState * 20}%)`;
+      document.getElementById('list').style.transform = `translateX(-${scrollState * 30}%)`;
     }
   }, [scrollState]);
   useEffect(() => {
@@ -50,7 +50,7 @@ const Top10List = ({ setFlag }) => {
     setLocalVisible(!scrollState);
   }, [localVisible, scrollState]);
   return (
-    <Top10Wrapper>
+    <Top8Wrapper>
       <div className="recommend">
         <div className="recommend__contents">오늘 한국의 TOP 10 콘텐츠</div>
         {(!localVisible || animation) && (
@@ -72,11 +72,11 @@ const Top10List = ({ setFlag }) => {
         <div className="recommend__detail" id="list">
           {list?.map((movie, i) => {
             return (
-              <Top10Movies
+              <Top8Movies
                 setFlag={setFlag}
-                top10Image={list[i].image}
-                top10RankImage={list[i].rankImage}
-                top10Likes={list[i].isLiked}
+                top8Image={list[i].image}
+                top8RankImage={list[i].rankImage}
+                top8Likes={list[i].isLiked}
                 key={list[i].rank}
                 post={movie}
               />
@@ -84,23 +84,22 @@ const Top10List = ({ setFlag }) => {
           })}
         </div>
       </div>
-    </Top10Wrapper>
+    </Top8Wrapper>
   );
 };
 
-function Top10Movies(props) {
+function Top8Movies(props) {
   return (
     <div className="recommend__movies">
-      <img className="recommend__number" src={props.top10RankImage} />
-      <img className="recommend__image" src={props.top10Image} />
-      <button className="recommend__heart"></button>
+      <img className="recommend__number" src={props.top8RankImage} />
+      <img className="recommend__image" src={props.top8Image} />
     </div>
   );
 }
 
-export default Top10List;
+export default Top8List;
 
-const Top10Wrapper = styled.div`
+const Top8Wrapper = styled.div`
   width: 100%;
   overflow-x: hidden;
   @media ${({ theme }) => theme.device.tablet} {
@@ -131,12 +130,6 @@ const Top10Wrapper = styled.div`
       display: flex;
       position: relative;
       margin-left: 7rem;
-    }
-    &__heart {
-      background: transparent;
-      padding: 0;
-      position: absolute;
-      right: 0.5rem;
     }
     &__number {
       display: flex;
