@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ic_all } from 'assets/index';
 const Footer = () => {
   return (
-    <>
+    <StyledRoot>
       <FooterIcon>
         <img className="icon_all" src={ic_all} />
       </FooterIcon>
@@ -29,11 +29,18 @@ const Footer = () => {
         <button>서비스 코드</button>
       </FooterBtn>
       <Description>{Subtitle}</Description>
-    </>
+    </StyledRoot>
   );
 };
 
 export default Footer;
+
+const StyledRoot = styled.div`
+  width: 70vw;
+  max-width: 70rem;
+  height: calc(100vh - 60rem);
+  align-self: center;
+`;
 
 const FooterIcon = styled.div`
   width: 60px;
