@@ -97,22 +97,6 @@ const StyledContent = styled.div`
       position: absolute;
       right: 0.5rem;
     }
-    &__arrowLeft {
-      animation-fill-mode: forwards;
-      cursor: pointer;
-      z-index: 100;
-      float: left;
-      position: relative;
-      margin-top: 0.8rem;
-    }
-    &__arrowRight {
-      animation-fill-mode: forwards;
-      z-index: 100;
-      cursor: pointer;
-      float: right;
-      position: relative;
-      margin-top: 0.1rem;
-    }
     &__progress-bar {
       width: 11.4rem;
       height: 0.2rem;
