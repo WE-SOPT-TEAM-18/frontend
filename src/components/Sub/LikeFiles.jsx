@@ -11,7 +11,7 @@ const LikeFiles = () => {
           <h1>내가 찜한 컨텐츠</h1>
         </LikeTitle>
         <LikeAdd>
-          <div src={ic_plus}></div>
+          <img src={ic_plus}></img>
           <div>폴더생성</div>
         </LikeAdd>
       </LikeHeader>
@@ -40,9 +40,15 @@ const LikeTitle = styled.h1`
 `;
 
 const LikeAdd = styled.div`
+  display: flex;
   font-size: 1.3rem;
   color: white;
   margin: auto 0;
   margin-left: 1.5rem;
   font-weight: 400;
+
+  & > div {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
 `;
