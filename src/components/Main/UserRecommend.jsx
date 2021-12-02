@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import MovieData from './MovieData';
-import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { arrow_left_gray, arrow_right_gray, heart_filled, heart_white } from 'assets/index';
+import { listCategory } from 'libs/rank.api';
+import { client } from 'libs/api';
 
-const UserRecommend = () => {
+const UserRecommend = ({ setFlag }) => {
   const [movies] = useState(MovieData);
   return (
     <RecommendWrapper>
       <div className="recommend">
         {movies.map((a, i) => {
-          return <Category movies={movies[i]} key={i} />;
+          return <Category setFlag={setFlag} movies={movies[i]} key={i} />;
         })}
       </div>
     </RecommendWrapper>
@@ -17,11 +19,21 @@ const UserRecommend = () => {
 };
 
 function Category(props) {
-  const totalSlide = 3;
+  const totalSlide = 4;
   const [scrollState, setScrollState] = useState(0);
   const [animation, setAnimation] = useState(false);
   const [localVisible, setLocalVisible] = useState(!scrollState);
   const slideRef = useRef(null);
+  const [list, setList] = useState([]);
+
+  const categoryDataList = async () => {
+    const dataList = await listCategory();
+    setList(dataList);
+  };
+
+  useEffect(() => {
+    categoryDataList();
+  }, []);
 
   const prevButton = () => {
     if (scrollState === 0) {
@@ -73,8 +85,16 @@ function Category(props) {
         }}
       />
       <div className="recommend__detail" id={props.movies.id}>
-        {props.movies.imageNumber.map((a, i) => {
-          return <MoviePost post={props.movies.imageNumber[i]} key={i} />;
+        {list?.map((a, i) => {
+          return (
+            <MoviePost
+              setFlag={props.setFlag}
+              postImage={list[i].image}
+              likes={list[i].isLiked}
+              key={list[i].contentId}
+              post={a}
+            />
+          );
         })}
       </div>
     </div>
@@ -82,9 +102,18 @@ function Category(props) {
 }
 
 function MoviePost(props) {
+  const [like, setLike] = useState(props.likes);
+  const handleHeartClick = async () => {
+    setLike(!like);
+    await client.post(`/like/${props.post.contentId}`, props.post);
+    props.setFlag((prev) => !prev);
+  };
   return (
     <div className="recommend__movies">
-      <img className="recommend__image" src={props.post.image} />
+      <img className="recommend__image" src={props.postImage} />
+      <button className="recommend__heart" onClick={handleHeartClick}>
+        <img src={like === true ? heart_filled : heart_white} />
+      </button>
     </div>
   );
 }
@@ -111,10 +140,17 @@ const RecommendWrapper = styled.div`
     &__movies {
       display: flex;
       margin-bottom: 3rem;
+      position: relative;
     }
     &__image {
       display: flex;
       margin-right: 0.2rem;
+    }
+    &__heart {
+      background: transparent;
+      padding: 0;
+      position: absolute;
+      right: 0.5rem;
     }
     &__number {
       display: flex;
