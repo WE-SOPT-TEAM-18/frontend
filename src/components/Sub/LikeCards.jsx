@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const LikeCards = () => {
   return (
     <LikeView>
-      {LikeData.map((datum, idx) => (
-        <LikeThumbnail datum={datum} key={`thumb-${idx}`} />
+      {LikeData.map((data, idx) => (
+        <LikeThumbnail data={data} key={`thumb-${idx}`} />
       ))}
     </LikeView>
   );

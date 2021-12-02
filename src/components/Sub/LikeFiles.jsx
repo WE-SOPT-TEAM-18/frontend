@@ -7,12 +7,10 @@ const LikeFiles = () => {
   return (
     <LikeBody>
       <LikeHeader>
-        <LikeTitle>
-          <h1>내가 찜한 컨텐츠</h1>
-        </LikeTitle>
+        <LikeTitle>내가 찜한 콘텐츠</LikeTitle>
         <LikeAdd>
           <img src={ic_plus}></img>
-          <div>폴더생성</div>
+          <div>폴더 생성</div>
         </LikeAdd>
       </LikeHeader>
       <LikeCards />
@@ -26,11 +24,13 @@ const LikeBody = styled.header`
   flex-direction: column;
   margin-top: 8rem;
 `;
+
 const LikeHeader = styled.title`
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
 `;
+
 const LikeTitle = styled.h1`
   font-size: 2rem;
   margin: auto 0;
