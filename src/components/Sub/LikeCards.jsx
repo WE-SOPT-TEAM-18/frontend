@@ -16,7 +16,10 @@ export default LikeCards;
 
 const LikeView = styled.div`
   width: 100%;
-  padding: 1rem;
+  padding: 3rem;
+  @media ${({ theme }) => theme.device.mobile} {
+    padding: 1.4rem;
+  }
   display: inline-flex;
   flex-wrap: wrap;
 `;

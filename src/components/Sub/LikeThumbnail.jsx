@@ -40,12 +40,29 @@ export default LikeThumbnail;
 
 const ImageContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 9.5rem);
   grid-gap: 0.4rem;
+  grid-template-columns: repeat(2, 9.5rem);
+  @media ${({ theme }) => theme.device.tablet} {
+    grid-template-columns: repeat(2, 10rem);
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    grid-template-columns: repeat(2, 7.6rem);
+  }
+  & > img {
+    width: 100%;
+  }
 `;
 
 const LikeThumb = styled.div`
   margin: 1rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    margin: 0;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    margin: 0.5rem;
+  }
 `;
 
 const LikeNum = styled.div`
