@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { heart_filled, arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { heart_filled } from 'assets/index';
 import { client } from 'libs/api';
+import Slider from 'react-slick';
 
 const HeartContent = ({ setFlag, heartList }) => {
   return (
@@ -12,49 +13,13 @@ const HeartContent = ({ setFlag, heartList }) => {
   );
 };
 
-function Category(props) {
-  const totalSlide = 3;
-  const [scrollState, setScrollState] = useState(0);
-  const [animation, setAnimation] = useState(false);
-  const [localVisible, setLocalVisible] = useState(!scrollState);
-  const slideRef = useRef(null);
-  const [current, setCurrent] = useState('sad');
+const Category = (props) => {
   const [prev, setPrev] = useState(null);
-
-  const prevButton = () => {
-    if (scrollState === 0) {
-      setScrollState(totalSlide);
-    } else {
-      setScrollState(scrollState - 1);
-    }
-  };
-
-  const nextButton = () => {
-    if (scrollState >= totalSlide) {
-      setScrollState(0);
-    } else {
-      setScrollState(scrollState + 1);
-    }
-  };
+  const [current, setCurrent] = useState('sad');
 
   const handleClick = (e) => {
     setCurrent(e.target.id);
   };
-
-  useEffect(() => {
-    if (slideRef) {
-      document.getElementById('heart-list').style.transition = 'all 1s ease-in-out';
-      document.getElementById('heart-list').style.transform = `translateX(-${scrollState * 20}%)`;
-    }
-  }, [scrollState]);
-
-  useEffect(() => {
-    if ((localVisible && scrollState) || (localVisible && !scrollState)) {
-      setAnimation(true);
-      setTimeout(() => setAnimation(false), 500);
-    }
-    setLocalVisible(!scrollState);
-  }, [localVisible, scrollState]);
 
   useEffect(() => {
     if (current !== null) {
@@ -68,6 +33,28 @@ function Category(props) {
     setPrev(current);
   }, [current]);
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 6.2,
+    slidesToScroll: 1,
+
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1.8,
+        },
+      },
+    ],
+  };
   return (
     <div className="heart__main">
       <Link to="/sub" className="heart__contents">
@@ -95,32 +82,16 @@ function Category(props) {
           </button>
         </StyledBtnWrapper>
       </StyledBox>
-      {(!localVisible || animation) && (
-        <img
-          className="heart__arrowLeft"
-          src={arrow_left_gray}
-          onClick={() => {
-            prevButton();
-          }}
-        />
-      )}
-      <img
-        className="heart__arrowRight"
-        src={arrow_right_gray}
-        onClick={() => {
-          nextButton();
-        }}
-      />
-      <div className="heart__detail" id="heart-list">
+      <Slider {...settings}>
         {props.movies.map((movie, i) => {
           return <MoviePost post={movie} setFlag={props.setFlag} key={i} />;
         })}
-      </div>
+      </Slider>
     </div>
   );
-}
+};
 
-function MoviePost(props) {
+const MoviePost = (props) => {
   const handleHeartClick = async () => {
     await client.post(`/like/${props.post.contentId}`, props.post);
     props.setFlag((prev) => !prev);
@@ -133,7 +104,7 @@ function MoviePost(props) {
       </button>
     </div>
   );
-}
+};
 
 export default HeartContent;
 
@@ -147,10 +118,7 @@ const StyledContent = styled.div`
       font-size: 1.6rem;
       text-decoration: none;
       color: #ffffff;
-    }
-    &__detail {
-      display: flex;
-      margin-top: 0.8rem;
+      margin-bottom: 0.8rem;
     }
     &__movies {
       display: flex;
@@ -167,22 +135,38 @@ const StyledContent = styled.div`
       position: absolute;
       right: 0.5rem;
     }
-    &__arrowLeft {
-      animation-fill-mode: forwards;
-      cursor: pointer;
-      z-index: 100;
-      float: left;
-      position: relative;
-      margin-top: 0.8rem;
-    }
-    &__arrowRight {
-      animation-fill-mode: forwards;
-      z-index: 100;
-      cursor: pointer;
-      float: right;
-      position: relative;
-      margin-top: 0.1rem;
-    }
+  }
+  .slick-arrow {
+    z-index: 100;
+    width: 3.8rem;
+    height: 10.5rem;
+    position: absolute;
+    top: 5.2rem;
+  }
+  .slick-arrow:hover {
+    background: rgba(20, 20, 20, 0.5);
+  }
+  .slick-prev {
+    left: 0;
+  }
+  .slick-prev:before {
+    opacity: 0;
+    content: '<';
+    font-size: 3rem;
+  }
+  .slick-prev:hover:before {
+    opacity: 1;
+  }
+  .slick-next {
+    right: 0;
+  }
+  .slick-next:before {
+    opacity: 0;
+    content: '>';
+    font-size: 3rem;
+  }
+  .slick-next:hover:before {
+    opacity: 1;
   }
 `;
 
