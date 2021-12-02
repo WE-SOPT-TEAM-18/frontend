@@ -16,8 +16,7 @@ export default LikeCards;
 
 const LikeView = styled.div`
   width: 100%;
-  padding: 10px;
+  padding: 1rem;
   display: inline-flex;
   flex-wrap: wrap;
-  //align-content: stretch;
 `;

@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LikeThumbnail = ({ datum }) => {
-  // const [likes] = useState(LikeData);
-  // console.log(`datum`, datum);
   return (
     <LikeThumb>
       <ImageContainer>
@@ -29,7 +27,6 @@ const ImageContainer = styled.div`
   grid-gap: 0.3rem;
 `;
 const LikeThumb = styled.div`
-  ///width: 20%;
   margin: 10px;
 `;
 const LikeNum = styled.div`

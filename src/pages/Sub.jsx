@@ -4,7 +4,6 @@ import LikeFiles from 'components/Sub/LikeFiles';
 import Footer from 'components/Common/Footer';
 
 const Sub = () => {
-  console.log('sub');
   return (
     <>
       <Header />
