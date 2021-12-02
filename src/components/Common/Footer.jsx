@@ -38,38 +38,44 @@ export default Footer;
 const StyledRoot = styled.div`
   width: 70vw;
   max-width: 70rem;
-  height: calc(100vh - 60rem);
   align-self: center;
+  margin-bottom: 5.1rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    margin-bottom: 3.2rem;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-bottom: 13.4rem;
+  }
 `;
 
 const FooterIcon = styled.div`
-  width: 60px;
-  margin-top: 40px;
-  margin-bottom: 12px;
+  width: 6rem;
+  margin-top: 4rem;
+  margin-bottom: 1.2rem;
 `;
 
 const FooterList = styled.div`
-  font-size: 11px;
+  font-size: 1.1rem;
   color: gray;
   & > ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 12px;
+    grid-gap: 1.2rem;
   }
 `;
 
 const FooterBtn = styled.div`
-  font-size: 10px;
+  font-size: 1rem;
   color: none;
   & > button {
     color: #808080;
     border: 1px solid #808080;
     background-color: transparent;
-    padding: 6px;
+    padding: 0.6rem;
   }
 
-  margin-bottom: 9px;
-  margin-top: 20px;
+  margin-bottom: 0.9rem;
+  margin-top: 2rem;
 `;
 const Subtitle = `넷플릭스서비시스코리아 유한회사
 통신판매업신고번호: 제2018 - 서울종로 - 0426호 전화번호: 080-001-9587 
@@ -80,8 +86,8 @@ const Subtitle = `넷플릭스서비시스코리아 유한회사
 const Description = styled.div`
   white-space: pre-wrap;
   width: 100%;
-  font-size: 11px;
-  line-height: 17px;
+  font-size: 1.1rem;
+  line-height: 1.7rem;
   color: #808080;
-  margin-top: 13px;
+  margin-top: 1.3rem;
 `;
