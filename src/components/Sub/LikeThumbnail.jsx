@@ -29,7 +29,7 @@ const ImageContainer = styled.div`
   grid-gap: 0.3rem;
 `;
 const LikeThumb = styled.div`
-  width: 20%;
+  ///width: 20%;
   margin: 10px;
 `;
 const LikeNum = styled.div`

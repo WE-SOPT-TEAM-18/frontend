@@ -19,5 +19,5 @@ const LikeView = styled.div`
   padding: 10px;
   display: inline-flex;
   flex-wrap: wrap;
-  align-content: stretch;
+  //align-content: stretch;
 `;
