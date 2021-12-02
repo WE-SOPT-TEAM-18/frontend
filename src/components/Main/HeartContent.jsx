@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { heart_filled } from 'assets/index';
+import { heart_filled, btn_left, btn_right } from 'assets/index';
 import { client } from 'libs/api';
 import Slider from 'react-slick';
 
@@ -151,8 +151,7 @@ const StyledContent = styled.div`
   }
   .slick-prev:before {
     opacity: 0;
-    content: '<';
-    font-size: 3rem;
+    content: url(${btn_left});
   }
   .slick-prev:hover:before {
     opacity: 1;
@@ -162,8 +161,7 @@ const StyledContent = styled.div`
   }
   .slick-next:before {
     opacity: 0;
-    content: '>';
-    font-size: 3rem;
+    content: url(${btn_right});
   }
   .slick-next:hover:before {
     opacity: 1;
