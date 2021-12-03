@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import MovieData from './MovieData';
-import { arrow_left_gray, arrow_right_gray, heart_filled, heart_white } from 'assets/index';
+import { btn_left, btn_right, heart_filled, heart_white } from 'assets/index';
 import { listCategory } from 'libs/rank.api';
 import { client } from 'libs/api';
+import Slider from 'react-slick';
 
 const UserRecommend = ({ setFlag }) => {
   const [movies] = useState(MovieData);
@@ -19,11 +20,6 @@ const UserRecommend = ({ setFlag }) => {
 };
 
 function Category(props) {
-  const totalSlide = 4;
-  const [scrollState, setScrollState] = useState(0);
-  const [animation, setAnimation] = useState(false);
-  const [localVisible, setLocalVisible] = useState(!scrollState);
-  const slideRef = useRef(null);
   const [list, setList] = useState([]);
 
   const categoryDataList = async () => {
@@ -35,56 +31,33 @@ function Category(props) {
     categoryDataList();
   }, []);
 
-  const prevButton = () => {
-    if (scrollState === 0) {
-      setScrollState(totalSlide);
-    } else {
-      setScrollState(scrollState - 1);
-    }
-  };
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 6.2,
+    slidesToScroll: 1,
 
-  const nextButton = () => {
-    if (scrollState >= totalSlide) {
-      setScrollState(0);
-    } else {
-      setScrollState(scrollState + 1);
-    }
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1.8,
+        },
+      },
+    ],
   };
-
-  useEffect(() => {
-    if (slideRef) {
-      document.getElementById(props.movies.id).style.transition = 'all 1s ease-in-out';
-      document.getElementById(props.movies.id).style.transform = `translateX(-${scrollState * 20}%)`;
-    }
-  }, [scrollState]);
-  useEffect(() => {
-    if ((localVisible && scrollState) || (localVisible && !scrollState)) {
-      setAnimation(true);
-      setTimeout(() => setAnimation(false), 500);
-    }
-    setLocalVisible(!scrollState);
-  }, [localVisible, scrollState]);
 
   return (
     <div className="recommend__main">
       <div className="recommend__contents">{props.movies.title}</div>
-      {(!localVisible || animation) && (
-        <img
-          className="recommend__arrowLeft"
-          src={arrow_left_gray}
-          onClick={() => {
-            prevButton();
-          }}
-        />
-      )}
-      <img
-        className="recommend__arrowRight"
-        src={arrow_right_gray}
-        onClick={() => {
-          nextButton();
-        }}
-      />
-      <div className="recommend__detail" id={props.movies.id}>
+      <Slider {...settings}>
         {list?.map((a, i) => {
           return (
             <MoviePost
@@ -96,7 +69,7 @@ function Category(props) {
             />
           );
         })}
-      </div>
+      </Slider>
     </div>
   );
 }
@@ -132,6 +105,7 @@ const RecommendWrapper = styled.div`
     &__contents {
       font-size: 1.6rem;
       font-weight: 700;
+      margin-bottom: 1.2rem;
     }
     &__detail {
       display: flex;
@@ -152,26 +126,36 @@ const RecommendWrapper = styled.div`
       position: absolute;
       right: 0.5rem;
     }
-    &__number {
-      display: flex;
-      position: absolute;
-      padding-left: 5.5rem;
-    }
-    &__arrowLeft {
-      animation-fill-mode: forwards;
-      cursor: pointer;
-      z-index: 100;
-      float: left;
-      position: relative;
-      margin-top: 0.8rem;
-    }
-    &__arrowRight {
-      animation-fill-mode: forwards;
-      z-index: 100;
-      cursor: pointer;
-      float: right;
-      position: relative;
-      margin-top: 0.1rem;
-    }
+  }
+
+  .slick-arrow {
+    z-index: 100;
+    width: 3.8rem;
+    height: 10.5rem;
+    position: absolute;
+    top: 5.2rem;
+  }
+  .slick-arrow:hover {
+    background: rgba(20, 20, 20, 0.5);
+  }
+  .slick-prev {
+    left: 0;
+  }
+  .slick-prev:before {
+    opacity: 0;
+    content: url(${btn_left});
+  }
+  .slick-prev:hover:before {
+    opacity: 1;
+  }
+  .slick-next {
+    right: 0;
+  }
+  .slick-next:before {
+    opacity: 0;
+    content: url(${btn_right});
+  }
+  .slick-next:hover:before {
+    opacity: 1;
   }
 `;
