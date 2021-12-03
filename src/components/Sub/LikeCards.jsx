@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const LikeCards = () => {
   return (
     <LikeView>
-      {LikeData.map((datum, idx) => (
-        <LikeThumbnail datum={datum} key={`thumb-${idx}`} />
+      {LikeData.map((data, idx) => (
+        <LikeThumbnail data={data} key={`thumb-${idx}`} />
       ))}
     </LikeView>
   );
@@ -16,7 +16,10 @@ export default LikeCards;
 
 const LikeView = styled.div`
   width: 100%;
-  padding: 1rem;
+  padding: 3rem;
+  @media ${({ theme }) => theme.device.mobile} {
+    padding: 1.4rem;
+  }
   display: inline-flex;
   flex-wrap: wrap;
 `;

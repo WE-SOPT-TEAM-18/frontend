@@ -1,5 +1,6 @@
 export { default as btn_bell } from './icons/btn_bell.svg';
 export { default as btn_more } from './icons/btn_more.svg';
+export { default as btn_left } from './icons/btn_left.svg';
 export { default as btn_right } from './icons/btn_right.svg';
 export { default as btn_search } from './icons/btn_search.svg';
 export { default as heart_filled } from './icons/heart_filled.svg';

@@ -7,12 +7,10 @@ const LikeFiles = () => {
   return (
     <LikeBody>
       <LikeHeader>
-        <LikeTitle>
-          <h1>내가 찜한 컨텐츠</h1>
-        </LikeTitle>
+        <LikeTitle>내가 찜한 콘텐츠</LikeTitle>
         <LikeAdd>
           <img src={ic_plus}></img>
-          <div>폴더생성</div>
+          <div>폴더 생성</div>
         </LikeAdd>
       </LikeHeader>
       <LikeCards />
@@ -26,29 +24,34 @@ const LikeBody = styled.header`
   flex-direction: column;
   margin-top: 8rem;
 `;
-const LikeHeader = styled.title`
+
+const LikeHeader = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-bottom: 2rem;
+  align-items: center;
 `;
+
 const LikeTitle = styled.h1`
-  font-size: 2rem;
-  margin: auto 0;
-  margin-left: 2.4rem;
+  font-size: 2.5rem;
   font-weight: 500;
   color: white;
+  margin-left: 4.1rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    margin-left: 3rem;
+  }
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-left: 1.4rem;
+  }
 `;
 
 const LikeAdd = styled.div`
   display: flex;
-  font-size: 1.3rem;
+  align-items: center;
+  font-size: 1.6rem;
   color: white;
-  margin: auto 0;
   margin-left: 1.5rem;
   font-weight: 400;
 
   & > div {
-    margin-top: 0.5rem;
     margin-left: 0.5rem;
   }
 `;
