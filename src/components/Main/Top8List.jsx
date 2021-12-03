@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { btn_left, btn_right } from 'assets/index';
-import { rank10Category } from 'libs/rank.api';
+import { rank10Category } from 'libs/api';
 import Slider from 'react-slick';
 
 const Top8List = ({ setFlag }) => {
