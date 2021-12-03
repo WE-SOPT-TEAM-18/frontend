@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import MovieData from './MovieData.jsx';
+import MovieData from './MovieData.js';
 import { btn_left, btn_right, heart_filled, heart_white } from 'assets/index';
 import { listCategory } from 'libs/api';
 import { client } from 'libs/api';
