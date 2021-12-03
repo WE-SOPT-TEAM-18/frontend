@@ -1,14 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { arrow_left_gray, arrow_right_gray } from 'assets/index';
+import { btn_left, btn_right } from 'assets/index';
 import { rank10Category } from 'libs/rank.api';
+import Slider from 'react-slick';
 
 const Top8List = ({ setFlag }) => {
-  const totalSlide = 1;
-  const [scrollState, setScrollState] = useState(0);
-  const [animation, setAnimation] = useState(false);
-  const [localVisible, setLocalVisible] = useState(!scrollState);
-  const slideRef = useRef(null);
   const [list, setList] = useState([]);
 
   const rankDataList = async () => {
@@ -20,56 +16,34 @@ const Top8List = ({ setFlag }) => {
     rankDataList();
   }, []);
 
-  const prevButton = () => {
-    if (scrollState === 0) {
-      setScrollState(totalSlide);
-    } else {
-      setScrollState(scrollState - 1);
-    }
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 6.2,
+    slidesToScroll: 1,
+
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1.8,
+        },
+      },
+    ],
   };
 
-  const nextButton = () => {
-    if (scrollState >= totalSlide) {
-      setScrollState(0);
-    } else {
-      setScrollState(scrollState + 1);
-    }
-  };
-
-  useEffect(() => {
-    if (slideRef) {
-      document.getElementById('list').style.transition = 'all 1s ease-in-out';
-      document.getElementById('list').style.transform = `translateX(-${scrollState * 30}%)`;
-    }
-  }, [scrollState]);
-  useEffect(() => {
-    if ((localVisible && scrollState) || (localVisible && !scrollState)) {
-      setAnimation(true);
-      setTimeout(() => setAnimation(false), 500);
-    }
-    setLocalVisible(!scrollState);
-  }, [localVisible, scrollState]);
   return (
     <Top8Wrapper>
       <div className="recommend">
         <div className="recommend__contents">오늘 한국의 TOP 10 콘텐츠</div>
-        {(!localVisible || animation) && (
-          <img
-            className="recommend__arrowLeft"
-            src={arrow_left_gray}
-            onClick={() => {
-              prevButton();
-            }}
-          />
-        )}
-        <img
-          className="recommend__arrowRight"
-          src={arrow_right_gray}
-          onClick={() => {
-            nextButton();
-          }}
-        />
-        <div className="recommend__detail" id="list">
+        <Slider {...settings}>
           {list?.map((movie, i) => {
             return (
               <Top8Movies
@@ -82,7 +56,7 @@ const Top8List = ({ setFlag }) => {
               />
             );
           })}
-        </div>
+        </Slider>
       </div>
     </Top8Wrapper>
   );
@@ -116,6 +90,7 @@ const Top8Wrapper = styled.div`
       font-size: 1.6rem;
       font-weight: 700;
       padding-left: 1rem;
+      margin-bottom: 1.2rem;
     }
     &__detail {
       display: flex;
@@ -135,21 +110,36 @@ const Top8Wrapper = styled.div`
       display: flex;
       position: absolute;
     }
-    &__arrowLeft {
-      animation-fill-mode: forwards;
-      cursor: pointer;
-      z-index: 100;
-      float: left;
-      position: relative;
-      height: 14.3rem;
-    }
-    &__arrowRight {
-      animation-fill-mode: forwards;
-      z-index: 100;
-      cursor: pointer;
-      float: right;
-      position: relative;
-      height: 14.3rem;
-    }
+  }
+  .slick-arrow {
+    z-index: 100;
+    width: 3.8rem;
+    position: absolute;
+    top: 5.2rem;
+    height: 14rem;
+    margin-top: 1.7rem;
+  }
+  .slick-arrow:hover {
+    background: rgba(20, 20, 20, 0.5);
+  }
+  .slick-prev {
+    left: 0;
+  }
+  .slick-prev:before {
+    opacity: 0;
+    content: url(${btn_left});
+  }
+  .slick-prev:hover:before {
+    opacity: 1;
+  }
+  .slick-next {
+    right: 0;
+  }
+  .slick-next:before {
+    opacity: 0;
+    content: url(${btn_right});
+  }
+  .slick-next:hover:before {
+    opacity: 1;
   }
 `;
