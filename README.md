@@ -94,3 +94,7 @@
 |김효인|백지연|안채량|
 |-|-|-|
 |[@Hyoin-Kim](https://github.com/Hyoin-Kim)|[@100Gyeon](https://github.com/100Gyeon)|[@Ryammie](https://github.com/Ryammie)|
+
+## 📌 배포 링크
+https://sopt-team18.netlify.app/
+
