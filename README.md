@@ -33,6 +33,8 @@
 "react": "^17.0.2",
 "react-dom": "^17.0.2",
 "react-router-dom": "^6.0.2",
+"react-slick": "^0.28.1",
+"slick-carousel": "^1.8.1",
 "react-scripts": "^4.0.3",
 "styled-reset": "^4.3.4",
 "styled-components": "^5.3.3",
@@ -64,17 +66,16 @@
  ┃ ┣ 📂Main
  ┃ ┃ ┣ 📜Billboard.jsx
  ┃ ┃ ┣ 📜HeartContent.jsx
- ┃ ┃ ┣ 📜HeartData.js
  ┃ ┃ ┣ 📜MovieData.js
- ┃ ┃ ┣ 📜Top10Data.js
- ┃ ┃ ┣ 📜Top10List.jsx
+ ┃ ┃ ┣ 📜Top8List.jsx
  ┃ ┃ ┣ 📜UserPick.jsx
  ┃ ┃ ┣ 📜UserRecommend.jsx
- ┃ ┃ ┣ 📜WatchingContent.jsx
- ┃ ┃ ┗ 📜WatchingData.js
+ ┃ ┃ ┗ 📜WatchingContent.jsx
  ┃ ┣ 📂Sub
+ ┃ ┃ ┣ 📜LikeCards.jsx
  ┃ ┃ ┣ 📜LikeData.js
- ┃ ┃ ┗ 📜LikeFiles.jsx
+ ┃ ┃ ┣ 📜LikeFiles.jsx
+ ┃ ┃ ┗ 📜LikeThumbnail.jsx
  ┣ 📂pages
  ┃ ┣ 📜Main.jsx
  ┃ ┗ 📜Sub.jsx
