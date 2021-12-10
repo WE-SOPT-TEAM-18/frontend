@@ -4,7 +4,8 @@
 ## 📌 Convention
 - Code Convention
   - eslint, prettier 사용
-  - 변수, 함수 Camel case 기본, 파일 이름(컴포넌트만) 대문자 시작
+  - 변수, 함수 : Camel case 사용
+  - 컴포넌트를 정의한 파일 : Pascal case 사용
   - styled-components : 코드 하단에 작성하기, px 대신 rem 사용하기
   
 - Commit Message Convention
@@ -28,6 +29,8 @@
 - feat/[name] (`feat/hyoin`, `feat/jiyeon`, `feat/chaeryang`) : 멤버별 기능 개발을 진행하는 브랜치
 
 ## 🛠 기술 스택
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=flat-square&logo=Styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/Yarn-2C8EBB?style=flat-square&logo=Yarn&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=Prettier&logoColor=white"/> <img src="https://img.shields.io/badge/Eslint-4B3263?style=flat-square&logo=Eslint&logoColor=white"/>
+
 ```
 "axios": "^0.24.0",
 "react": "^17.0.2",
@@ -92,9 +95,9 @@
 
 ## ❤ 개발자 소개
 |김효인|백지연|안채량|
-|-|-|-|
+|---|---|---|
 |[@Hyoin-Kim](https://github.com/Hyoin-Kim)|[@100Gyeon](https://github.com/100Gyeon)|[@Ryammie](https://github.com/Ryammie)|
 
-## 📌 배포 링크
+## 🔗 배포 링크
 https://sopt-team18.netlify.app/
 
