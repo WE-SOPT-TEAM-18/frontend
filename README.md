@@ -3,7 +3,7 @@
 
 ## 📌 Convention
 - Code Convention
-  - eslint, prettier 사용
+  - ESLint, prettier 사용
   - 변수, 함수 : Camel case 사용
   - 컴포넌트를 정의한 파일 : Pascal case 사용
   - styled-components : 코드 하단에 작성하기, px 대신 rem 사용하기
@@ -93,11 +93,12 @@
 📜yarn.lock
 ```
 
+## ✨ 구현 화면
+|Desktop|Tablet|Mobile|
+|-|-|-|
+|![image](https://user-images.githubusercontent.com/58380158/167907371-7bd0fd4e-79cf-4513-a6b2-723474d0f3ab.png)![image](https://user-images.githubusercontent.com/58380158/167907720-9087b71a-f33b-46f7-a360-81377e6857d4.png)|![image](https://user-images.githubusercontent.com/58380158/167908241-c8120bee-79d9-4251-aa0d-70a3f39ac4cf.png)![image](https://user-images.githubusercontent.com/58380158/167908277-c80c7756-efb1-4e77-8db9-06584b962942.png)|![image](https://user-images.githubusercontent.com/58380158/167908462-115613aa-b7ed-4c0d-885f-e8e4936bc01f.png)![image](https://user-images.githubusercontent.com/58380158/167908480-bc1a8af0-dd72-411f-9e3f-97ab1b4e3306.png)|
+
 ## ❤ 개발자 소개
 |김효인|백지연|안채량|
 |---|---|---|
 |[@Hyoin-Kim](https://github.com/Hyoin-Kim)|[@100Gyeon](https://github.com/100Gyeon)|[@Ryammie](https://github.com/Ryammie)|
-
-## 🔗 배포 링크
-https://sopt-team18.netlify.app/
-
